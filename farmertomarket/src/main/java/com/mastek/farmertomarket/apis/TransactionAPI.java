@@ -29,6 +29,12 @@ public interface TransactionAPI {
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
 	@Produces(MediaType.APPLICATION_JSON)
 	public Transaction registerNewTransaction(@BeanParam Transaction newTransaction);
+
+//	@Path("/customer/customerItems/{customerID}")
+//	@Produces({ MediaType.APPLICATION_JSON })
+//	Set<Item> getItemsCustomer(@PathParam("customerID") int customerID);
+//
+//}
 }
 
 

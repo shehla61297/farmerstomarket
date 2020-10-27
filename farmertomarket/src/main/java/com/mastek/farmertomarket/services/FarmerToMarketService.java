@@ -200,8 +200,8 @@ public Farmer findFarmerID(int farmerID) {
 		check.setCurrentCustomer(cust);
 		cust.getCustomerCheckouts().add(check);
 	
-		// check = checkDAO.save(check);
-		// cust = custDAO.save(cust);
+		check = checkDAO.save(check);
+		cust = custDAO.save(cust);
 	
 		return check;
 	}
@@ -222,17 +222,19 @@ public Farmer findFarmerID(int farmerID) {
 
 	}
 
-	@Override
+
 	@Transactional
 	public Basket assignBasketsToItems( int basketID, int itemID) {
 
 		Basket bask = baskDAO.findById(basketID).get();
-		Item it = itemDAO.findById(itemID).get();
+		Item newItem = itemDAO.findById(itemID).get();
 
-		bask.getItemsAssigned().add(it);
+		bask.getItemsAssigned().add(newItem);
 		baskDAO.save(bask);
 
+		System.out.println(bask);
 		return bask;
+
 
 	}
 
@@ -243,13 +245,14 @@ public Farmer findFarmerID(int farmerID) {
 //		return list;
 //	}
 
+
 	@Transactional
 	public Item assignItemsToCustomers(int itemID, int customerID) {
 
 		Item it = itemDAO.findById(itemID).get();
-		Customer cust = custDAO.findById(customerID).get();
+		Customer newCustomer = custDAO.findById(customerID).get();
 
-		it.getCustomersAssigned().add(cust);
+		it.getCustomersAssigned().add(newCustomer);
 		itemDAO.save(it);
 
 		return it;
@@ -261,9 +264,9 @@ public Farmer findFarmerID(int farmerID) {
 	public Farmer assignFarmersToProducts(int farmerID, int productID) {
 
 		Farmer farm = farmDAO.findById(farmerID).get();
-		Product prod = prodDAO.findById(productID).get();
+		Product newProduct = prodDAO.findById(productID).get();
 
-		farm.getProductsAssigned().add(prod);
+		farm.getProductsAssigned().add(newProduct);
 		farmDAO.save(farm);
 
 		return farm;
@@ -273,16 +276,16 @@ public Farmer findFarmerID(int farmerID) {
 	@Transactional
 	public Product assignProductToItem(int productID, int itemID) {
 
-		Product prod = prodDAO.findById(productID).get();
 		Item it = itemDAO.findById(itemID).get();
+		Product newProduct = prodDAO.findById(productID).get();
 
-		prod.setItem(it);
-		it.setProduct(prod);
+		newProduct.setItem(it);
+		it.setProduct(newProduct);
 
-		prod = prodDAO.save(prod);
+		newProduct = prodDAO.save(newProduct);
 		it = itemDAO.save(it);
 
-		return prod;
+		return newProduct;
 
 	}
 
@@ -297,7 +300,111 @@ public Farmer findFarmerID(int farmerID) {
 		return Item;
 	}
 
+	@Override
+	public Customer getCustomerLogin(String customerEmail, String customerPassword) {
+		// TODO Auto-generated method stub
+		return custDAO.findCustomerLogin(customerEmail, customerPassword);
+	}
+
+	@Override
+	public Farmer getFarmerLogin(String farmerEmail, String farmerPassword) {
+		// TODO Auto-generated method stub
+		return farmDAO.findFarmerLogin(farmerEmail, farmerPassword);
+	}
+
+	@Override
+	@Transactional
+	public Set<Item> getItemsCustomers(int customerID) {
+		Customer currentCustomer = custDAO.findById(customerID).get();
+		int count = currentCustomer.getItemsCustomers().size();
+		System.out.println("Customer ID: " + currentCustomer.getCustomerID() + "Customer Forename:"
+				+ currentCustomer.getCustomerForename() + "Customer Surname:" + currentCustomer.getCustomerSurname()
+				+ "customer Items" + count);
+
+		Set<Item> Item = currentCustomer.getItemsCustomers();
+		return Item;
+	}
+//
+//	@Override
+//	public Set<Item> getItemsCustomer(int customerID) {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
+//	
+
+	@Override
+	public Set<Checkout> getCustomerCheckouts(int customerID) {
+
+		Customer currentCustomer = custDAO.findById(customerID).get();
+		Checkout currentCustomerCheckouts = checkDAO.findById(customerID).get();
+		System.out.println("customer ID: " + currentCustomer.getCustomerID() + "Checkout ID"
+				+ currentCustomerCheckouts.getCheckoutID() + "Checkout Date: "
+				+ currentCustomerCheckouts.getDeliveryDate() + "Checkout Total: "
+				+ currentCustomerCheckouts.getTotalCost());
+
+		Set<Checkout> Checkout = currentCustomer.getCustomerCheckouts();
+		return Checkout;
+	}
+
+	@Override
+	public Set<Product> getFarmerProducts(int farmerID) {
+//		Product currentFarmerProducts = prodDAO.findById(farmerID).get();
+		Farmer currentFarmer = farmDAO.findById(farmerID).get();
+//		System.out.println("Farmer ID: " + currentFarmer.getFarmerID() + "Farmer Forename: "
+//				+ currentFarmer.getFarmerForename() + "Farmer Surname: " + currentFarmer.getFarmerSurname()
+//				+ "Products ID" + currentFarmerProducts.getProductID() + "Product Name"
+//				+ currentFarmerProducts.getProductName() + "Product Description"
+//				+ currentFarmerProducts.getProductDescription() + "Product Quantity: "
+//				+ currentFarmerProducts.getProductQuantity() + "Product Price Per Unit "
+//				+ currentFarmerProducts.getProductPrice());
+
+		System.out.println(
+				"Farmer ID: " + currentFarmer.getFarmerID() + "Product ID: " + currentFarmer.getProductsAssigned());
+		Set<Product> Product = currentFarmer.getProductsAssigned();
+		return Product;
+	}
+
+	@Override
+	@Transactional
+	public Item registerItemsForBasket(int basketID, Item newItem) {
+		newItem = itemDAO.save(newItem);
+		assignBasketsToItems(basketID, newItem.getItemID());
+
+		return newItem;
+	}
+
+	@Override
+	@Transactional
+	public Product registerProductsForFarmers(int farmerID, Product newProduct) {
+		newProduct = prodDAO.save(newProduct);
+		assignFarmersToProducts(farmerID, newProduct.getProductID());
+		return newProduct;
+	}
+
+	@Override
+	@Transactional
+	public Customer registerItemsForCustomers(int itemID, Customer newCustomer) {
+		newCustomer = custDAO.save(newCustomer);
+		assignItemsToCustomers(itemID, newCustomer.getCustomerID());
+		return newCustomer;
+	}
+
+	@Override
+	public Product registerProductAsItem(int itemID, Product newProduct) {
+		return null;
+	}
+
+	@Override
+	public Product getProductItem(int itemID) {
 
 
-	
+		return null;
+	}
+
+	@Override
+	public Customer registerCheckoutsForCustomer(int customerID) {
+
+		return null;
+	}
+
 }

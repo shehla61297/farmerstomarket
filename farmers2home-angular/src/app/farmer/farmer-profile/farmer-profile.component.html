@@ -1,0 +1,92 @@
+ <!-- <table [ngClass]="'light'" class="table col-sm-2 offset-sm-5" *ngIf="farmerService.isLoggedIn">
+    <thead>
+        <tr>
+          <th>Email Address</th>
+          <td>{{farmerService.currentFarmer.email}}</td>
+        </tr>
+        <tr>
+          <th>First Name</th>
+          <td>{{farmerService.currentFarmer.farmerFirstName}}</td>
+        </tr>
+        <tr>
+            <th>Last Name</th>
+            <td>{{farmerService.currentFarmer.farmerLastName}}</td>
+        </tr>
+        <tr>
+          <th>Location</th>
+          <td>{{farmerService.currentFarmer.farmerLocation}}</td>
+        </tr>
+        <tr>
+          <th>Contact</th>
+          <td>{{farmerService.currentFarmer.farmerContact}}</td>
+        </tr>
+        </thead>
+    </table>  -->
+    <button class="add-new-product" data-toggle="collapse" data-target="#demo"><h3>Add New Product</h3></button>
+<div id="demo" class="collapse">
+  <form class="add-new-product-form" (submit)="addProduct({  farmerID:19,
+                                productID:29,
+                                productName:productName.value,
+                                productDescription:productDescription.value,
+                                productPrice:productPrice.value,
+                                productWeightKG:productWeightKG.value,
+                                productQuantity:productQuantity.value})">
+    <div class="center">
+      <tr>
+        <td class="no-border"><input placeholder="Enter Product Name" #productName></td>
+        <br>
+        <td class="no-border"><input placeholder="Enter Description" #productDescription></td>
+        <br>
+        <td class="no-border"><input placeholder="Enter Price" #productPrice></td>
+        <td class="no-border"><input placeholder="Enter Weight (kg)" #productWeightKG></td>
+        <td class="no-border"><input placeholder="Enter Quantity Available" #productQuantity></td>
+        <td class="no-border"><input type="submit" value="Add" style="background-color: rgb(0, 105, 5); border: 0px; color: white; padding: 16px; font-size: 16px;"></td>
+      </tr>
+    </div>
+  </form>
+</div>
+
+    <table class="farmer-products" > 
+      <tr>
+        
+        <!-- <th scope="col">Name</th> -->
+        <!-- <th scope="col">Basket ID</th> -->
+        <th class="farmer-product-heading" scope="col">Product Image</th>
+        <br>
+        <th class="farmer-product-heading" scope="col">Product ID</th>
+        <br>
+        <th class="farmer-product-heading" scope="col">Product Name</th>
+        <br>
+        <th class="farmer-product-heading" scope="col">Product Description</th>
+        <br>
+        <th class="farmer-product-heading" scope="col">Product Type</th>
+        <br>
+        <th class="farmer-product-heading" scope="col">Product Price</th>
+        <br>
+        <th class="farmer-product-heading" scope="col">Product Quantity</th>
+        <br>
+        <th class="farmer-product-heading" scope="col">Product Weight (KG)</th>
+     
+       
+    
+    <tr *ngFor="let prod of farmerProducts; let i = index">
+
+        <td> <img src="/assets/images/placeholder.jpg" height=100 class="placeholder-image"> </td>
+        <br>
+        <td>{{prod.productID}}</td>
+        <br>
+        <td>{{prod.productName}}</td> 
+        <br>
+        <td>{{prod.productDescription}}</td> 
+        <br>
+        <td>{{prod.productType}}</td> 
+        <br>
+        <td>{{prod.productPrice}}</td> 
+        <br>
+        <td>{{prod.productQuantity}}</td> 
+        <br>
+        <td>{{prod.productWeightKG}}</td> 
+       
+      
+    </tr>
+    

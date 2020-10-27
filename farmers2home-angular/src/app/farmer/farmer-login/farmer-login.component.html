@@ -1,0 +1,16 @@
+<body class="farmer-login">
+    
+
+<form class="card p-3 bg-light" id="farmerLoginForm" [formGroup]="farmerLoginForm" (ngSubmit)="farmerLogin(pemail.value, ppass.value)">
+    <h2>Login</h2>
+    <div class="form-group">
+        <label for="farmerEmailInput" class="text-nowrap col-sm-2 offset-sm-1 col-form-label">Email address</label>
+        <input type="email" class="form-control col-sm-10 offset-sm-1" id="farmerEmailInput" placeholder="Enter email" formControlName="farmerEmail" #pemail>
+    </div>
+    <div class="form-group">
+        <label for="farmerPasswordInput" class="text-nowrap col-sm-2 offset-sm-1 col-form-label">Password</label>
+        <input type="password" class="form-control col-sm-10 offset-sm-1" id="farmerPasswordInput" placeholder="Enter password" formControlName="farmerPassword" #ppass>
+    </div>
+    <button type="submit" class="btn btn-dark col-sm-4 offset-sm-4">Submit</button>
+</form>
+</body>

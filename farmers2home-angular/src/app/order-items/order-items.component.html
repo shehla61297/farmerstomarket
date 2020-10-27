@@ -1,0 +1,31 @@
+<h1 class="heading" >Current Items in Customers Orders</h1>
+ <table  class="table">
+   <br>
+  <tr class="item-table">
+    <th scope="col">Item Image</th>
+    <th scope="col">Name</th>
+    <th scope="col">Price per Unit (£) </th>
+    <th scope ="col">Quantity Wanted</th>
+  </tr> 
+<br>
+<br>
+<br>
+  <tr class="orderItems" *ngFor="let orderItems of orderItems; let i = index">
+
+    <td> <img src="/assets/images/placeholder.jpg" height=100 class="placeholder-image"> </td>
+  
+    <td>{{orderItems.orderItemName}}</td>
+
+    <td>{{orderItems.orderItemPrice}}</td>
+    
+    <td> <input type="number" id="quantity" value="0" name="quantity" min="1" max="5"></td>
+
+    
+
+    <router-outlet></router-outlet>
+    
+  
+       
+  
+
+     

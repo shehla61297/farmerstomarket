@@ -1,0 +1,46 @@
+h2{
+    text-align: center;
+ }
+ 
+ caption{
+     text-align: center;
+     font-weight: bold;
+     caption-side: top;
+     font-size: larger;
+ }
+ 
+ .orderRow{
+     cursor: pointer;
+ }
+ 
+ .orderRow:hover{
+     background-color: #bddbf0;
+ }
+ .farmer-products{
+     text-align: center;
+     border-right: 1cm;
+     border-color: white;
+     margin-left: 1cm;
+     margin-top: 1cm;
+     align-self: center;
+ }
+ .farmer-product-heading{
+     font-size: large;
+     padding-left: 0.5cm;
+ }
+ .placeholder-image{
+     align-items: center;
+ }
+ .add-new-product{
+    align-self: center;
+    margin-left: 14.6cm;
+    background-color: green;
+    color: white;
+ }
+.add-new-product-form{
+    align-self: center;
+    margin-left: 5cm;
+}
+.no-border{
+    align-self: center;
+}

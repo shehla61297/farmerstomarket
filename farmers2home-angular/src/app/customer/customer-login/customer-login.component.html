@@ -1,0 +1,12 @@
+<form class="card p-3 bg-light" id="customerLoginForm" [formGroup]="customerLoginForm" (ngSubmit)="customerLogin(pemail.value, ppass.value)">
+    <h2>Login</h2>
+    <div class="form-group">
+        <label for="customerEmailInput" class="text-nowrap col-sm-2 offset-sm-1 col-form-label">Email address</label>
+        <input type="email" class="form-control col-sm-10 offset-sm-1" id="customerEmailInput" placeholder="Enter email" formControlName="customerEmail" #pemail>
+    </div>
+    <div class="form-group">
+        <label for="customerPasswordInput" class="text-nowrap col-sm-2 offset-sm-1 col-form-label">Password</label>
+        <input type="password" class="form-control col-sm-10 offset-sm-1" id="customerPasswordInput" placeholder="Enter password" formControlName="customerPassword" #ppass>
+    </div>
+    <button type="submit" class="btn btn-dark col-sm-4 offset-sm-4">Submit</button>
+</form>

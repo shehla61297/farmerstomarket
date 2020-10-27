@@ -21,13 +21,13 @@ import org.springframework.data.annotation.Transient;
 
 @XmlRootElement
 @Entity 												// declares the class as entity, to be managed by JPA
-@Table(name = "basket")
+@Table(name = "ftom_basket")
 public class Basket {
 
 //	
 	
 	
-	@FormParam("basketID")
+//	@FormParam("basketID")
 	int basketID;
 	
 	@FormParam("basketAmount")
@@ -35,7 +35,6 @@ public class Basket {
 	
 	Set<Item> itemsAssigned = new HashSet<>();
 
-	
 	@ManyToMany(cascade=CascadeType.ALL) // configure many to many association for entities
 	@JoinTable(name="ftom_Basket_Items",  // provide the join table name
 			joinColumns= {@JoinColumn(name="fk_basketID")}, 
@@ -75,6 +74,37 @@ public class Basket {
 	@Override
 	public String toString() {
 		return "basket [basketID=" + basketID + "]";
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + basketAmount;
+		result = prime * result + basketID;
+		result = prime * result + ((itemsAssigned == null) ? 0 : itemsAssigned.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Basket other = (Basket) obj;
+		if (basketAmount != other.basketAmount)
+			return false;
+		if (basketID != other.basketID)
+			return false;
+		if (itemsAssigned == null) {
+			if (other.itemsAssigned != null)
+				return false;
+		} else if (!itemsAssigned.equals(other.itemsAssigned))
+			return false;
+		return true;
 	}
 	
 }

@@ -1,0 +1,44 @@
+.heading-contact{
+    margin-top: 3cm;
+    font-size: 1.5cm;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-align: center;
+    color: green;
+    
+}
+
+.contact-details{
+    font-size: 0.5cm;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-align: center;
+    color: lightseagreen;
+}
+.message{
+    font-size: 0.5cm;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-align: center;
+    color: lightseagreen;
+
+}
+.contact-form{
+    text-align: center;
+    
+}
+.field{
+    color: aquamarine;
+    box-sizing: 5cm;
+}
+.input{
+    font-size: 0.5cm;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-align: center;
+}
+.submit-button{
+    color: white;
+    background-color: green;
+}
+.contact-page{
+    border-top: 2cm;
+    border-style: ridge;
+    border-color: green;
+}

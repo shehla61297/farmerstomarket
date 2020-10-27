@@ -59,7 +59,7 @@ public class Item {
 	Set<Customer> customersAssigned = new HashSet<>();
 	// provide the property in Item with @ManyToMany and @JoinTable configurations
 	@ManyToMany(cascade = CascadeType.ALL) // configure many to many association for entities
-	@JoinTable(name = "ftom_Items_Customers", // provide the join table name
+	@JoinTable(name = "ftom_items_customers", // provide the join table name
 			joinColumns = { @JoinColumn(name = "fk_customerID") }, inverseJoinColumns = {
 					@JoinColumn(name = "fk_itemID") }) // foreign key column for collection type
 	@Transient

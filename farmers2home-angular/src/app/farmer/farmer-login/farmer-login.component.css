@@ -1,0 +1,19 @@
+#farmerLoginForm{
+    width: 50%;
+    margin: auto;
+    color: black;
+}
+
+h2{
+    text-align: center;
+}
+
+.card{
+    border-radius: 25px;
+}
+.farmer-login{
+    border-top: 2cm;
+    border-style: ridge;
+    border-color: green;
+    margin-top: 1cm;
+}

@@ -1,0 +1,31 @@
+<br>
+<br>
+<br>
+
+<h1 class="heading" >Current Products In Stock</h1>
+<table  class="table">
+  <tr class="item-table">
+    <th scope="col">Product Image</th>
+    <th scope="col">Name</th>
+    <th scope="col">Price</th>
+    <th scope="col">Quantity</th>
+    <th scope ="col">Quantity Wanted</th>
+  </tr>
+
+  <tr class="item" *ngFor="let it of items; let i = index">
+   
+    <!-- <td>{{it.itemId}}</td> -->
+    <td> <img src="/assets/images/placeholder.jpg"  height=100>
+    </td>
+    
+    <td>{{it.itemName}}</td>
+    <td>£{{it.itemPrice}}</td>
+    <td>{{it.itemQuantity}}</td>
+    <td> <input type="number" id="quantity" value="0" name="quantity" min="1" max="5"></td>
+   
+    <button (click)="addItemToBasket(it.itemID, 10,
+    {selectedQuantity:basketQuantity.value,price:pr.itemPrice})" 
+    class="add-to-basket-button">Add To Basket</button>
+
+  </tr>
+</table>

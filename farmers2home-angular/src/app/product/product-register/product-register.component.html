@@ -1,0 +1,30 @@
+<form class="card p-3 bg-light" id="productRegisterForm" [formGroup]="ProductRegisterForm" 
+(ngSubmit)="addNewProduct({farmerId:pfid.value,productName:pname.value,productDesc:pdesc.value,productCat:pcat.value,
+  productPrice:pprice.value,stockQuantity:psq.value})">
+  <h2>Register</h2>
+  <div class="form-group">
+    <label for="farmerIdInput" class="text-nowrap col-sm-2 offset-sm-1 col-form-label">Farmer Id</label>
+    <input type="text" class="form-control col-sm-10 offset-sm-1" id="productNameInput" placeholder="Enter Farmer Id" formControlName="farmerId" #pfid>
+</div>
+  <div class="form-group">
+      <label for="productNameInput" class="text-nowrap col-sm-2 offset-sm-1 col-form-label">Product Name</label>
+      <input type="text" class="form-control col-sm-10 offset-sm-1" id="productNameInput" placeholder="Enter Product Name" formControlName="productName" #pname>
+  </div>
+  <div class="form-group">
+      <label for="productDescInput" class="text-nowrap col-sm-2 offset-sm-1 col-form-label">Product Description</label>
+      <input type="text" class="form-control col-sm-10 offset-sm-1" id="productDescInput" placeholder="Enter Product Description" formControlName="productDesc" #pdesc>
+  </div>
+  <div class="form-group">
+      <label for="productCatInput" class="text-nowrap col-sm-2 offset-sm-1 col-form-label">Product Category</label>
+      <input type="text" class="form-control col-sm-10 offset-sm-1" id="productCatInput" placeholder="Enter Product Category" formControlName="productCat" #pcat>
+  </div>
+  <div class="form-group">
+      <label for="productPriceInput" class="text-nowrap col-sm-2 offset-sm-1 col-form-label">Product Price</label>
+      <input type="number" class="form-control col-sm-10 offset-sm-1" id="productPriceInput" placeholder="Enter Product Price" formControlName="productPrice" #pprice>
+  </div>
+  <div class="form-group">
+      <label for="stockQuantityInput" class="text-nowrap col-sm-2 offset-sm-1 col-form-label">Stock Quantity</label>
+      <input type="text" class="form-control col-sm-10 offset-sm-1" id="stockQuantityInput" placeholder="Enter Stock Quantity" formControlName="stockQuantity" #psq>
+  </div>
+  <button type="number" class="btn btn-dark col-sm-4 offset-sm-4">Submit</button>
+</form>

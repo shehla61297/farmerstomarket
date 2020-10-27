@@ -19,31 +19,31 @@ import com.mastek.farmertomarket.entities.Item;
 public interface BasketAPI {
 
 	@GET
-	@Path("/basket/list")
+	@Path("basket/list")
 	@Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML}) //formats which the method supports
 	public Iterable<Basket> listAllBaskets();
 	
 	@GET //http method
-	@Path("/basket/find/{basketID}") //url with parameter format
+	@Path("/basket/find/{basketID}") // url with parameter format
 	@Produces({MediaType.APPLICATION_JSON})
 	public Basket findBasketID(@PathParam("basketID") int basketID);
 
 	@POST // http method Post used to send data in requests
-	@Path("/basket/register")
+	@Path("basket/register")
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
 	@Produces(MediaType.APPLICATION_JSON)
 	public Basket registerNewBasket(@BeanParam Basket newBasket);
 	
 	@GET
-	@Path("/basket/basketItems/{basketID}")
+	@Path("/basketItems/{basketID}")
 	@Produces({MediaType.APPLICATION_JSON})
 	public Set<Item> getBasketItems(@PathParam("basketID") int basketID);
 	
 	@POST // http method Post used to send data in requests
-	@Path("/basket/basketItems/register")
+	@Path("/basketItems/register")
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
 	@Produces(MediaType.APPLICATION_JSON)
-	Basket assignBasketsToItems(@FormParam("basketID") int basketID, @FormParam("itemID") int itemID);
+	public Item registerItemsForBasket(@FormParam("basketID") int basketID, @BeanParam Item newItem);
 
 }
 

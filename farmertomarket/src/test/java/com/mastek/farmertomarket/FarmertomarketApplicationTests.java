@@ -95,6 +95,7 @@ class FarmertomarketApplicationTests {
 		farm.setFarmType(FarmType.MIXED);
 		farm.setFarmerUsername("BerryKnotFarm");
 		farm.setFarmerPassword("BKnot123");
+		farm.setFarmerEmail("HPrince123@example.com");
 		
 		farm = farmDAO.save(farm);
 	}
@@ -132,7 +133,7 @@ class FarmertomarketApplicationTests {
 	
 	@Test
 	void testAssignCheckoutToCustomers() {
-		 Checkout check = ftomSvc.assignCheckoutToCustomers(3, 5);
+		Checkout check = ftomSvc.assignCheckoutToCustomers(4, 6);
 		 
 		assertNotNull(check.getCurrentCustomer(), "Checkout Not Assigned");
 		
@@ -140,29 +141,31 @@ class FarmertomarketApplicationTests {
 		System.out.println("Checkout assigned to customer");
 	}
 	
+
+
 	@Test
 	void testAssignTransactionToCheckout() {
 
-		Transaction tran = ftomSvc.assignTransactionToCheckout(4, 3);
+		Transaction tran = ftomSvc.assignTransactionToCheckout(12, 4);
 		assertNotNull(tran.getTransactionID(), "Transaction Not Assigned");
 
 		System.out.println("Transaction assigned to checkout");
 	}
 
-//	@Test
-//	void testAssignBasketsToItems() {
-//
-//		Basket bask = ftomSvc.assignBasketsToItems(10, 34);
-//
-//		assertNotNull(bask.getItemsAssigned(), "Basket Not Assigned");
-//
-//		System.out.println("Basket assigned to items");
-//	}
+	@Test
+	void testAssignBasketsToItems() {
+
+		Basket bask = ftomSvc.assignBasketsToItems(10, 7);
+
+		assertNotNull(bask.getItemsAssigned(), "Basket Not Assigned");
+
+		System.out.println("Basket assigned to items");
+	}
 
 	@Test
 	void testAssignItemsToCustomers() {
 
-		Item it = ftomSvc.assignItemsToCustomers(6, 5);
+		Item it = ftomSvc.assignItemsToCustomers(7, 6);
 
 		assertNotNull(it.getCustomersAssigned(), "Customer  Not Assigned");
 		System.out.println("Customer assigned to items");
@@ -171,7 +174,7 @@ class FarmertomarketApplicationTests {
 	@Test
 	void testAssignFarmersToProducts() {
 
-		Farmer farm = ftomSvc.assignFarmersToProducts(2, 7);
+		Farmer farm = ftomSvc.assignFarmersToProducts(19, 1);
 
 		assertNotNull(farm.getProductsAssigned(), "Farmer  Not Assigned");
 
@@ -181,15 +184,16 @@ class FarmertomarketApplicationTests {
 	@Test
 	void testAssignProductToItem() {
 
-		Product prod = ftomSvc.assignProductToItem(1, 6);
+		Product prod = ftomSvc.assignProductToItem(1, 7);
 
 		assertNotNull(prod.getItem(), "Product  Not Assigned");
+
 
 	}
 
 	@Test
 	void testUpdateItemDAO() {
-		Item it = itemDAO.findById(104).get();
+		Item it = itemDAO.findById(14).get();
 		System.out.println("Item Details Fetched");
 		it.setItemName("Pears");
 		it.setItemPrice(0.33);
@@ -203,7 +207,7 @@ class FarmertomarketApplicationTests {
 
 	@Test
 	void testUpdateFarmerDAO() {
-		Farmer farm = farmDAO.findById(8).get();
+		Farmer farm = farmDAO.findById(9).get();
 		System.out.println("Farmer Details Fetched");
 		farm.setFarmName("Silversage Acres");
 		farm.setFarmerForename("Hermione");
@@ -219,7 +223,7 @@ class FarmertomarketApplicationTests {
 
 	@Test
 	void testUpdateProductDAO() {
-		Product prod = prodDAO.findById(7).get();
+		Product prod = prodDAO.findById(8).get();
 		System.out.println("Product Details Fetched");
 		prod.setProductName("Apples");
 		prod.setProductDescription("Granny Smith, green apples!");
@@ -235,7 +239,7 @@ class FarmertomarketApplicationTests {
 
 	@Test
 	void testUpdateTransactionDAO() {
-		Transaction tran = tranDAO.findById(10).get();
+		Transaction tran = tranDAO.findById(12).get();
 		System.out.println("Transaction Details Fetched");
 
 		tran.setTransactionDate("11/09/2020");
@@ -247,7 +251,7 @@ class FarmertomarketApplicationTests {
 
 	@Test
 	void testUpdateCustomerDAO() {
-		Customer cust = custDAO.findById(11).get();
+		Customer cust = custDAO.findById(6).get();
 		System.out.println("Customer Details Fetched");
 		cust.setCustomerAddress("25 Wellington Street, Dewsbury, WF131HF");
 		cust.setCustomerBalance(25.00);
@@ -262,7 +266,7 @@ class FarmertomarketApplicationTests {
 
 	@Test
 	void testUpdateCheckoutDAO() {
-		Checkout check = checkDAO.findById(94).get();
+		Checkout check = checkDAO.findById(4).get();
 		System.out.println("Checkout Details Fetched");
 		check.setDeliveryDate("19/09/2020");
 		check.setTotalCost(20.00);

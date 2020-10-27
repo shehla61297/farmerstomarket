@@ -1,0 +1,54 @@
+<table [ngClass]="'light'" class="table col-sm-2 offset-sm-5" *ngIf="custService.isLoggedIn">
+    <thead>
+    <tr>
+      <th>Email Address</th>
+      <td>{{custService.currentUser.emailAddress}}</td>
+    </tr>
+    <tr>
+      <th>Name</th>
+      <td>{{custService.currentUser.customerName}}</td>
+    </tr>
+    <tr>
+      <th>Address</th>
+      <td>{{custService.currentUser.customerAddress}}</td>
+    </tr>
+    <tr>
+      <th>Contact</th>
+      <td>{{custService.currentUser.customerContact}}</td>
+    </tr>
+    </thead>
+</table>
+
+<table [ngClass]="'light'" class="table table-bordered col-sm-8 offset-sm-2" *ngIf="custService.isLoggedIn">
+    <caption [ngClass]="'light'">My Orders</caption>
+    <thead>
+    <tr>
+      <th>Order ID</th>
+      <th>Order Price</th>
+      <th>Order Status</th>
+      <th>Order Date</th>
+      <th>Subscription</th>
+    </tr>
+    <!-- <tr class="orderRow" *ngFor = "let row of orders" (click)="orderDetails(row.orderId)">
+        <td *ngFor = "let column of headers">
+          {{row..orderId}}
+        </td>
+      </tr>
+    </thead>
+</table> -->
+
+
+<h2 *ngIf="!custService.isLoggedIn">Please Sign In!</h2>
+
+<tr class="orderItems" *ngFor="let order of orders; let i = index">
+
+  <!-- <td> <img src="/assets/images/placeholder.jpg" height=100 class="placeholder-image"> </td> -->
+
+  <td>{{order.orderId}}</td>
+
+  <td>{{order.orderPrice}}</td>
+  <td>{{order.orderStatus}}</td>
+  <td>{{order.orderDate}}</td>
+  <td>{{order.isSubscription}}</td>
+  
+  <!-- <td> <input type="number" id="quantity" value="0" name="quantity" min="1" max="5"></td> -->

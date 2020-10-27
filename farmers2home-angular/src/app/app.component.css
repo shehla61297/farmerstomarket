@@ -1,0 +1,33 @@
+.body{
+    font-size:small;
+    color:grey;
+    text-align: center;
+}
+.product-item-filter{
+    border-bottom: 1px solid #000000;
+    border-top: 1px solid #000000;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+    padding: 6px 0;
+}
+.product{
+    align-self: center;
+    padding-left: 0.5cm;
+}
+.add-to-basket{
+    background-color: white;
+    padding-left: 0.5cm;
+    align-self: center;
+    color: green;
+    border-color: white;
+    border-style: groove;
+}
+.prices{
+    color: #000000;
+}

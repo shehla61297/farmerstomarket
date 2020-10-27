@@ -70,6 +70,7 @@ public class Transaction {
 		return "transaction [transactionID=" + transactionID + ", transactionDate=" + transactionDate
 				+ ", transactionAmount=" + transactionAmount + "]";
 	}
+
 	
 	
 

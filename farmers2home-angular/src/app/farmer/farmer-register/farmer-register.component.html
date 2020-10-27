@@ -1,0 +1,74 @@
+<form class="card p-3 bg-light" id="farmerRegisterForm" [formGroup]="farmerRegisterForm"
+(ngSubmit)="onSubmit({email:pemail.value, secondaryEmail:pconfirm.value, password:ppass.value,
+    farmerFirstName:pfarmerFirstName.value, farmerLastName:pfarmerLastName.value,
+    location:plocation.value,
+    contactNumber:pcontactNumber.value})">
+
+
+    <h2>Register</h2>
+    <div class="form-group">
+        <label for="farmerFirstNameInput" class="text-nowrap col-sm-2 offset-sm-1 col-form-label">First Name</label>
+        <input type="text" class="form-control col-sm-10 offset-sm-1" id="farmerFirstNameInput" placeholder="Enter First Name" formControlName="farmerFirstName" 
+        [ngClass]="{'is-invalid': farmerRegisterForm.get('farmerFirstName').touched && farmerRegisterForm.get('farmerFirstName').invalid}" #pfarmerFirstName>
+        <div class="invalid-feedback form-control col-sm-10 offset-sm-1">
+            <div>First Name is Required</div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="farmerLastNameInput" class="text-nowrap col-sm-2 offset-sm-1 col-form-label">Last Name</label>
+        <input type="text" class="form-control col-sm-10 offset-sm-1" id="farmerLastNameInput" placeholder="Enter Last Name" formControlName="farmerLastName" 
+        [ngClass]="{'is-invalid': farmerRegisterForm.get('farmerLastName').touched && farmerRegisterForm.get('farmerLastName').invalid}" #pfarmerLastName>
+        <div class="invalid-feedback form-control col-sm-10 offset-sm-1">
+            <div>Last Name is Required</div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="farmerEmailInput" class="text-nowrap col-sm-2 offset-sm-1 col-form-label">Email address</label>
+        <input type="email" class="form-control col-sm-10 offset-sm-1" id="farmerEmailInput" placeholder="Enter email" formControlName="farmerEmail" 
+        [ngClass]="{ 'is-invalid': submitted && f.farmerEmail.errors}" #pemail>
+        <div *ngIf="submitted && f.farmerEmail.errors" class="invalid-feedback form-control col-sm-10 offset-sm-1">
+            <div *ngIf="f.farmerEmail.errors.required">Email is Required</div>
+            <div *ngIf="f.farmerEmail.errors.email">Email must be a valid email address</div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="farmerEmailSecondaryInput" class="text-nowrap col-sm-2 offset-sm-1 col-form-label">Confirm Email</label>
+        <input type="email" class="form-control col-sm-10 offset-sm-1" id="farmerEmailSecondaryInput" placeholder="Confirm email" formControlName="confirm" #pconfirm
+        [ngClass]="{ 'is-invalid': submitted && (isEmailMismatch || f.confirm.errors) }">
+        <div *ngIf="submitted && (isEmailMismatch || f.confirm.errors)" class="invalid-feedback form-control col-sm-10 offset-sm-1">
+            <div *ngIf="f.confirm.errors.required"> Confirm Email is required</div>
+            <div *ngIf="isEmailMismatch">Emails must match</div>
+        </div> 
+    </div>
+
+    <div class="form-group">
+        <label for="farmerPasswordInput" class="text-nowrap col-sm-2 offset-sm-1 col-form-label">Password</label>
+        <input type="password" class="form-control col-sm-10 offset-sm-1" id="farmerPasswordInput" placeholder="Enter password" formControlName="farmerPassword" 
+        [ngClass]="{'is-invalid': farmerRegisterForm.get('farmerPassword').touched && farmerRegisterForm.get('farmerPassword').invalid}"#ppass>
+        <div class="invalid-feedback form-control col-sm-10 offset-sm-1">
+            <div>Password Required</div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="farmerLocationInput" class="text-nowrap col-sm-2 offset-sm-1 col-form-label">Location</label>
+        <input type="text" class="form-control col-sm-10 offset-sm-1" id="farmerLocationInput" placeholder="Enter location" formControlName="farmerLocation" 
+        [ngClass]="{'is-invalid': farmerRegisterForm.get('farmerLocation').touched && farmerRegisterForm.get('farmerLocation').invalid}" #plocation>
+        <div class="invalid-feedback form-control col-sm-10 offset-sm-1">
+            <div>Location Required</div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="farmerContactInput" class="text-nowrap col-sm-2 offset-sm-1 col-form-label">Contact Number</label>
+        <input type="text" class="form-control col-sm-10 offset-sm-1" id="farmerContactInput" placeholder="Enter contact num" formControlName="farmerContact" 
+        [ngClass]="{'is-invalid': farmerRegisterForm.get('farmerContact').touched && farmerRegisterForm.get('farmerContact').invalid}" #pcontactNumber>
+        <div class="invalid-feedback form-control col-sm-10 offset-sm-1">
+            <div>Contact Number Required</div>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-dark col-sm-4 offset-sm-4">Submit</button>
+</form>
