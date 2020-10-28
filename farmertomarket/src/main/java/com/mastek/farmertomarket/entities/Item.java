@@ -13,6 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.ws.rs.FormParam;
@@ -24,10 +26,8 @@ import org.springframework.data.annotation.Transient;
 @XmlRootElement
 @Entity 												// declares the class as entity, to be managed by JPA
 @Table(name="ftom_item")
-//@NamedQueries({ @NamedQuery(name = "Item.findName", query = "select n from Item n where n.name=:name")
-//	@NamedQuery(name="VisaDetails.findLastEntryByEmail",
-//				query="select e from VisaDetails e where e.email=:email")
-//})
+@NamedQueries({
+		@NamedQuery(name = "basket.findBasketID", query = "select b from Basket b where b.basketID=:basketID") })
 public class Item {
 	
 		
@@ -124,10 +124,66 @@ public class Item {
 
 	@Override
 	public String toString() {
-		return "item [itemID=" + itemID + ", itemName=" + itemName + ", itemQuantity=" + itemQuantity + ", itemPrice="
-				+ itemPrice + "]";
+		return "Item [itemID=" + itemID + ", itemName=" + itemName + ", itemQuantity=" + itemQuantity + ", itemPrice="
+				+ itemPrice + ", basketItems=" + basketItems + ", customersAssigned=" + customersAssigned + ", Product="
+				+ Product + "]";
 	}
-	
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((Product == null) ? 0 : Product.hashCode());
+		result = prime * result + ((basketItems == null) ? 0 : basketItems.hashCode());
+		result = prime * result + ((customersAssigned == null) ? 0 : customersAssigned.hashCode());
+		result = prime * result + itemID;
+		result = prime * result + ((itemName == null) ? 0 : itemName.hashCode());
+		long temp;
+		temp = Double.doubleToLongBits(itemPrice);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		temp = Double.doubleToLongBits(itemQuantity);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Item other = (Item) obj;
+		if (Product == null) {
+			if (other.Product != null)
+				return false;
+		} else if (!Product.equals(other.Product))
+			return false;
+		if (basketItems == null) {
+			if (other.basketItems != null)
+				return false;
+		} else if (!basketItems.equals(other.basketItems))
+			return false;
+		if (customersAssigned == null) {
+			if (other.customersAssigned != null)
+				return false;
+		} else if (!customersAssigned.equals(other.customersAssigned))
+			return false;
+		if (itemID != other.itemID)
+			return false;
+		if (itemName == null) {
+			if (other.itemName != null)
+				return false;
+		} else if (!itemName.equals(other.itemName))
+			return false;
+		if (Double.doubleToLongBits(itemPrice) != Double.doubleToLongBits(other.itemPrice))
+			return false;
+		if (Double.doubleToLongBits(itemQuantity) != Double.doubleToLongBits(other.itemQuantity))
+			return false;
+		return true;
+	}
+
 	
 
 }

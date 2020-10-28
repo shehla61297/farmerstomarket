@@ -70,6 +70,17 @@ public class Product {
 		this.farmerProducts = farmerProducts;
 	}
 	
+	Set<Basket> basketProducts = new HashSet<>();
+
+	@ManyToMany(mappedBy = "productAssignedToBasket")
+	@XmlTransient
+	public Set<Basket> getBasketProducts() {
+		return basketProducts;
+	}
+
+	public void setBasketProducts(Set<Basket> basketProducts) {
+		this.basketProducts = basketProducts;
+	}
 
 	@Id												    // Marking the property as primary key for the table 
 	@Column(name="productID")							// using column to provide the default column name
@@ -77,6 +88,7 @@ public class Product {
 	public int getProductID() {
 		return productID;
 	}
+
 
 	public void setProductID(int productID) {
 		this.productID = productID;
@@ -132,11 +144,79 @@ public class Product {
 	}
 
 	@Override
-	public String toString() {
-		return "product [productID=" + productID + ", productName=" + productName + ", productType=" + productType
-				+ ", productDescription=" + productDescription + ", productPrice=" + productPrice + ", productQuantity="
-				+ productQuantity + ", productWeightKG=" + productWeightKG + "]";
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((Item == null) ? 0 : Item.hashCode());
+		result = prime * result + ((basketProducts == null) ? 0 : basketProducts.hashCode());
+		result = prime * result + ((farmerProducts == null) ? 0 : farmerProducts.hashCode());
+		result = prime * result + ((productDescription == null) ? 0 : productDescription.hashCode());
+		result = prime * result + productID;
+		result = prime * result + ((productName == null) ? 0 : productName.hashCode());
+		long temp;
+		temp = Double.doubleToLongBits(productPrice);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		result = prime * result + productQuantity;
+		result = prime * result + ((productType == null) ? 0 : productType.hashCode());
+		temp = Double.doubleToLongBits(productWeightKG);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		return result;
 	}
-	
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Product other = (Product) obj;
+		if (Item == null) {
+			if (other.Item != null)
+				return false;
+		} else if (!Item.equals(other.Item))
+			return false;
+		if (basketProducts == null) {
+			if (other.basketProducts != null)
+				return false;
+		} else if (!basketProducts.equals(other.basketProducts))
+			return false;
+		if (farmerProducts == null) {
+			if (other.farmerProducts != null)
+				return false;
+		} else if (!farmerProducts.equals(other.farmerProducts))
+			return false;
+		if (productDescription == null) {
+			if (other.productDescription != null)
+				return false;
+		} else if (!productDescription.equals(other.productDescription))
+			return false;
+		if (productID != other.productID)
+			return false;
+		if (productName == null) {
+			if (other.productName != null)
+				return false;
+		} else if (!productName.equals(other.productName))
+			return false;
+		if (Double.doubleToLongBits(productPrice) != Double.doubleToLongBits(other.productPrice))
+			return false;
+		if (productQuantity != other.productQuantity)
+			return false;
+		if (productType != other.productType)
+			return false;
+		if (Double.doubleToLongBits(productWeightKG) != Double.doubleToLongBits(other.productWeightKG))
+			return false;
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "Product [productID=" + productID + ", productName=" + productName + ", productType=" + productType
+				+ ", productDescription=" + productDescription + ", productPrice=" + productPrice + ", productQuantity="
+				+ productQuantity + ", productWeightKG=" + productWeightKG + ", Item=" + Item + ", farmerProducts="
+				+ farmerProducts + ", basketProducts=" + basketProducts + "]";
+	}
+
 	
 }

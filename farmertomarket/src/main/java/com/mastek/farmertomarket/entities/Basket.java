@@ -22,6 +22,8 @@ import org.springframework.data.annotation.Transient;
 @XmlRootElement
 @Entity 												// declares the class as entity, to be managed by JPA
 @Table(name = "ftom_basket")
+
+
 public class Basket {
 
 //	
@@ -50,13 +52,30 @@ public class Basket {
 		this.itemsAssigned = itemsAssigned;
 	}
 
+	Set<Product> productAssignedToBasket = new HashSet<>();
 	
+	@ManyToMany(cascade = CascadeType.ALL) // configure many to many association for entities
+	@JoinTable(name = "ftom_Basket_Product", // provide the join table name
+			joinColumns = { @JoinColumn(name = "fk_basketID") }, inverseJoinColumns = {
+					@JoinColumn(name = "fk_productID") } // foreign key column for collection type
+	)
+	@Transient // ignore this property when storing employee data in MongoDB
+	@XmlTransient // ignore the association property when shared via Service
+	public Set<Product> getProductAssignedToBasket() {
+		return productAssignedToBasket;
+	}
+
+	public void setProductAssignedToBasket(Set<Product> productAssignedToBasket) {
+		this.productAssignedToBasket = productAssignedToBasket;
+	}
+
 	@Id												    // Marking the property as primary key for the table 
 	@Column(name="basketID")							// using column to provide the default column name
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	public int getBasketID() {
 		return basketID;
 	}
+
 
 	public void setBasketID(int basketID) {
 		this.basketID = basketID;
@@ -71,10 +90,6 @@ public class Basket {
 		this.basketAmount = basketAmount;
 	}
 
-	@Override
-	public String toString() {
-		return "basket [basketID=" + basketID + "]";
-	}
 
 	@Override
 	public int hashCode() {
@@ -83,6 +98,7 @@ public class Basket {
 		result = prime * result + basketAmount;
 		result = prime * result + basketID;
 		result = prime * result + ((itemsAssigned == null) ? 0 : itemsAssigned.hashCode());
+		result = prime * result + ((productAssignedToBasket == null) ? 0 : productAssignedToBasket.hashCode());
 		return result;
 	}
 
@@ -104,7 +120,18 @@ public class Basket {
 				return false;
 		} else if (!itemsAssigned.equals(other.itemsAssigned))
 			return false;
+		if (productAssignedToBasket == null) {
+			if (other.productAssignedToBasket != null)
+				return false;
+		} else if (!productAssignedToBasket.equals(other.productAssignedToBasket))
+			return false;
 		return true;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "Basket [basketID=" + basketID + ", basketAmount=" + basketAmount + ", itemsAssigned=" + itemsAssigned
+				+ ", productAssignedToBasket=" + productAssignedToBasket + "]";
+	}
+
 }

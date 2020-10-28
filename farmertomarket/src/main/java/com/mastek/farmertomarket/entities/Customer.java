@@ -143,14 +143,6 @@ public class Customer {
 	}
 
 
-	@Override
-	public String toString() {
-		return "Customer [customerID=" + customerID + ", customerEmail=" + customerEmail + ", customerForename="
-				+ customerForename + ", customerSurname=" + customerSurname + ", customerAddress=" + customerAddress
-				+ ", customerBalance=" + customerBalance + ", customerDOB=" + customerDOB + ", customerUsername="
-				+ customerUsername + ", customerPassword=" + customerPassword + ", customerCheckouts="
-				+ customerCheckouts + ", itemsCustomers=" + itemsCustomers + "]";
-	}
 
 	public String getCustomerEmail() {
 		return customerEmail;
@@ -246,8 +238,13 @@ public class Customer {
 		return true;
 	}
 
-	
-	
-	
+	@Override
+	public String toString() {
+		return "Customer [customerID=" + customerID + ", customerEmail=" + customerEmail + ", customerForename="
+				+ customerForename + ", customerSurname=" + customerSurname + ", customerAddress=" + customerAddress
+				+ ", customerBalance=" + customerBalance + ", customerDOB=" + customerDOB + ", customerUsername="
+				+ customerUsername + ", customerPassword=" + customerPassword + ", customerCheckouts="
+				+ customerCheckouts + ", itemsCustomers=" + itemsCustomers + "]";
+	}
 
 }

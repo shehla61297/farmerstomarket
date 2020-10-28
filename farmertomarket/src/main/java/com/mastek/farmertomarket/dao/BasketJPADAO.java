@@ -8,6 +8,7 @@ import com.mastek.farmertomarket.entities.Basket;
 
 public interface BasketJPADAO extends CrudRepository<Basket, Integer>{
 
+
 }
 
 

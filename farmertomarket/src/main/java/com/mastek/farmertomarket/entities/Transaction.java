@@ -67,11 +67,51 @@ public class Transaction {
 
 	@Override
 	public String toString() {
-		return "transaction [transactionID=" + transactionID + ", transactionDate=" + transactionDate
-				+ ", transactionAmount=" + transactionAmount + "]";
+		return "Transaction [transactionID=" + transactionID + ", transactionDate=" + transactionDate
+				+ ", transactionAmount=" + transactionAmount + ", Checkout=" + Checkout + "]";
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((Checkout == null) ? 0 : Checkout.hashCode());
+		long temp;
+		temp = Double.doubleToLongBits(transactionAmount);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		result = prime * result + ((transactionDate == null) ? 0 : transactionDate.hashCode());
+		result = prime * result + transactionID;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Transaction other = (Transaction) obj;
+		if (Checkout == null) {
+			if (other.Checkout != null)
+				return false;
+		} else if (!Checkout.equals(other.Checkout))
+			return false;
+		if (Double.doubleToLongBits(transactionAmount) != Double.doubleToLongBits(other.transactionAmount))
+			return false;
+		if (transactionDate == null) {
+			if (other.transactionDate != null)
+				return false;
+		} else if (!transactionDate.equals(other.transactionDate))
+			return false;
+		if (transactionID != other.transactionID)
+			return false;
+		return true;
 	}
 
 	
 	
+
 
 }

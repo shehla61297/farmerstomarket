@@ -148,14 +148,6 @@ public class Farmer {
 	}
 
 	@Override
-	public String toString() {
-		return "Farmer [farmerID=" + farmerID + ", farmerEmail=" + farmerEmail + ", farmLocation=" + farmLocation
-				+ ", farmerForename=" + farmerForename + ", farmerSurname=" + farmerSurname + ", farmName=" + farmName
-				+ ", FarmType=" + FarmType + ", farmerUsername=" + farmerUsername + ", farmerPassword=" + farmerPassword
-				+ ", productsAssigned=" + productsAssigned + "]";
-	}
-
-	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
@@ -228,7 +220,13 @@ public class Farmer {
 		return true;
 	}
 
+	@Override
+	public String toString() {
+		return "Farmer [farmerID=" + farmerID + ", farmerEmail=" + farmerEmail + ", farmLocation=" + farmLocation
+				+ ", farmerForename=" + farmerForename + ", farmerSurname=" + farmerSurname + ", farmName=" + farmName
+				+ ", FarmType=" + FarmType + ", farmerUsername=" + farmerUsername + ", farmerPassword=" + farmerPassword
+				+ ", productsAssigned=" + productsAssigned + "]";
+	}
 	
-	
-
 }
+	

@@ -238,6 +238,19 @@ public Farmer findFarmerID(int farmerID) {
 
 	}
 
+	@Transactional
+	public Basket assignProductsToBasket(int basketID, int productID) {
+
+		Basket bask = baskDAO.findById(basketID).get();
+		Product newProd = prodDAO.findById(productID).get();
+
+		bask.getProductAssignedToBasket().add(newProd);
+
+		System.out.println(bask);
+
+		return bask;
+	}
+
 	// @Override
 	// @Transactional
 //	public Iterable<Item> findByName(String itemName) {
@@ -289,16 +302,7 @@ public Farmer findFarmerID(int farmerID) {
 
 	}
 
-	@Override
-	@Transactional
-	public Set <Item> getBasketItems(int basketID) {
-		Basket currentBask = baskDAO.findById(basketID).get();
-		int count = currentBask.getItemsAssigned().size();
-		System.out.println("Basket found: " + currentBask.getBasketID() + " Items in Basket = " + count);
 
-		Set<Item> Item = currentBask.getItemsAssigned();
-		return Item;
-	}
 
 	@Override
 	public Customer getCustomerLogin(String customerEmail, String customerPassword) {
@@ -364,14 +368,7 @@ public Farmer findFarmerID(int farmerID) {
 		return Product;
 	}
 
-	@Override
-	@Transactional
-	public Item registerItemsForBasket(int basketID, Item newItem) {
-		newItem = itemDAO.save(newItem);
-		assignBasketsToItems(basketID, newItem.getItemID());
 
-		return newItem;
-	}
 
 	@Override
 	@Transactional
@@ -405,6 +402,45 @@ public Farmer findFarmerID(int farmerID) {
 	public Customer registerCheckoutsForCustomer(int customerID) {
 
 		return null;
+	}
+
+	@Override
+	@Transactional
+	public Item registerItemsForBasket(int basketID, Item newItem) {
+		newItem = itemDAO.save(newItem);
+		assignBasketsToItems(basketID, newItem.getItemID());
+
+		return newItem;
+	}
+
+//	@Override
+//	@Transactional
+//	public Iterable<Item> findBasketItems(int basketID) {
+//		Basket currentBask = baskDAO.findById(basketID).get();
+//		int count = currentBask.getItemsAssigned().size();
+//		System.out.println("Basket found: " + currentBask.getBasketID() + " Items in Basket = " + count);
+//
+//		Set<Item> Item = currentBask.getItemsAssigned();
+//		return Item;
+//	}
+
+	@Override
+	@Transactional
+	public Set<Product> getBasketProducts(int basketID) {
+		Basket currentBask = baskDAO.findById(basketID).get();
+		int count = currentBask.getProductAssignedToBasket().size();
+		System.out.println("Basket found: " + currentBask.getBasketID() + " Products in Basket =" + count);
+
+		Set<Product> Product = currentBask.getProductAssignedToBasket();
+		return Product;
+	}
+
+	@Override
+	@Transactional
+	public Product registerProductsForBasket(int basketID, Product newProd) {
+		newProd = prodDAO.save(newProd);
+		assignProductsToBasket(basketID, newProd.getProductID());
+		return newProd;
 	}
 
 }

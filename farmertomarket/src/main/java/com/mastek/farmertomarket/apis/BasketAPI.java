@@ -14,6 +14,7 @@ import javax.ws.rs.core.MediaType;
 
 import com.mastek.farmertomarket.entities.Basket;
 import com.mastek.farmertomarket.entities.Item;
+import com.mastek.farmertomarket.entities.Product;
 
 @Path("/farmertomarket/")
 public interface BasketAPI {
@@ -34,16 +35,27 @@ public interface BasketAPI {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Basket registerNewBasket(@BeanParam Basket newBasket);
 	
-	@GET
-	@Path("/basketItems/{basketID}")
-	@Produces({MediaType.APPLICATION_JSON})
-	public Set<Item> getBasketItems(@PathParam("basketID") int basketID);
+//	@GET
+//	@Path("/basketItems/{basketID}")
+//	@Produces({MediaType.APPLICATION_JSON})
+//	public Iterable<Item> findBasketItems(@PathParam("basketID") int basketID);
 	
 	@POST // http method Post used to send data in requests
 	@Path("/basketItems/register")
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
 	@Produces(MediaType.APPLICATION_JSON)
 	public Item registerItemsForBasket(@FormParam("basketID") int basketID, @BeanParam Item newItem);
+
+	@GET
+	@Path("/basketProducts/{basketID}")
+	@Produces({ MediaType.APPLICATION_JSON })
+	public Set<Product> getBasketProducts(@PathParam("basketID") int basketID);
+
+	@POST // http method Post used to send data in requests
+	@Path("/basketProduct/register")
+	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Product registerProductsForBasket(@FormParam("basketID") int basketID, @BeanParam Product newProd);
 
 }
 

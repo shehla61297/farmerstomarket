@@ -4,9 +4,10 @@
    <br>
   <tr class="item-table">
     <th scope="col">Product Image</th>
+
     <th scope="col">Name</th>
     <th scope="col">Product Type</th>
-    <th scope="col">Product Description/th>
+    <th scope="col">Product Description</th>
     <th scope="col">Price per Unit (£) </th>
     <th scope ="col">Quantity Wanted</th>
   </tr> 
@@ -29,9 +30,8 @@
 
     
 
-    <button (click)="addItemToBasket(it.itemID, 10,
-    {selectedQuantity:basketQuantity.value,price:pr.itemPrice})" 
-    class="add-to-basket-button">Add To Basket</button>
+    <button  class="add-to-basket-button" (click)="addProductToBasket()" 
+   >Add To Basket</button>
 
     
   </tr>

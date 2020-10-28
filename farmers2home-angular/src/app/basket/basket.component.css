@@ -1,4 +1,9 @@
-.basket-items-heading{
+.basket-items{
     text-align: center;
 
+
+}
+.th{
+    align-self: center;
+    margin-left: 0.5cm;
 }
