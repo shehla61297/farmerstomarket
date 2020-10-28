@@ -25,19 +25,7 @@ export class FarmerComponent implements OnInit {
     this.farmerProducts=[]
   }
 
-  addProduct(newProduct:Product){
-    this.farmerService.addProduct(newProduct).subscribe(
-      res=>{
-        newProduct = res
-        this.farmerService.addProductToFarmer(19, newProduct.productID).subscribe( 
-        res =>{
-          this.farmerService.getProducts().subscribe(
-            res=> {this.Products=res }
-          )
-      })
-      })
-  }
-
+ 
 
   addProductToFarmer(farmerID:number, productID:number){
     this.productService.addProductToFarmer(farmerID, productID, ).subscribe(

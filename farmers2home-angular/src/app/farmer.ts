@@ -1,7 +1,7 @@
 export interface Farmer {
-    farmerId: number;
-    farmerFirstName: string;
-    farmerLastName: string;
+    farmerID: number;
+    farmerForename: string;
+    farmerSurname: string;
     location: string;
     contactNumber: string;
     email:string;

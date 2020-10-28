@@ -28,7 +28,7 @@ export class ProductService {
       var reqBody = "farmerId="+farmerId+"&productId="+productId
 
       return this.httpsvc.post<Product[]>(
-        this.rootURL+"/farmer_to_product_assignment/", reqBody, httpOpts
+        this.rootURL+"/farmerProducts/register", reqBody, httpOpts
       )
   }
   
@@ -53,8 +53,8 @@ export class ProductService {
     return this.httpsvc.get<Product[]>(this.rootURL+"/product/"+farmerId)
   }
 
-  registerProductsForFarmer(farmerId:number,newProduct:Product):Observable<Product>{
-    var contentData = "farmerId="+farmerId
+  registerProductsForFarmer(farmerID:number,newProduct:Product):Observable<Product>{
+    var contentData = "farmerID="+farmerID
                       +"&productName="+newProduct.productName
                       +"&productDescription="+newProduct.productDescription
                       +"&productType="+newProduct.productType
@@ -68,7 +68,7 @@ export class ProductService {
     }
     
     return this.httpsvc.post<Product>(
-    this.rootURL+"/product/register", // URL
+    this.rootURL+"/farmerProducts/register", // URL
     contentData, // data for the server
     httpOptions) // header options
   }
@@ -100,7 +100,7 @@ export class ProductService {
         var reqBody = "basketID="+basketID+"&productID="+productID
   
         return this.httpsvc.post<Product[]>(
-          this.rootURL+"basket/basketProducts", reqBody, httpOpts
+          this.rootURL+"basket/basketProduct/register", reqBody, httpOpts
         )
     }
     

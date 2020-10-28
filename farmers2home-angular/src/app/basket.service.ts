@@ -33,7 +33,7 @@ addItemToBasket(basketID:number, itemID: number):Observable<Item[]> {
   var reqBody = "basketID=" + basketID + "&itemID=" + itemID
 
   return this.httpsvc.post<Item[]>(
-    this.rootURL + "add-item-to-basket", reqBody, httpOpts
+    this.rootURL + "basketItems/register", reqBody, httpOpts
   )
 }
 }

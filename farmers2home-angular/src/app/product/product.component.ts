@@ -11,6 +11,7 @@ import { Item } from '../item';
 import { ItemService } from '../item.service';
 import { CustomerService } from '../customer.service';
 import { Basket } from '../basket';
+import { BasketProduct } from '../basketProducts';
 
 @Component({
   selector: 'app-product',
@@ -32,6 +33,7 @@ export class ProductComponent implements OnInit {
   currentBasket: Basket[]
   basketService: any;
   newItems : Item[]
+  basketProducts: BasketProduct[]
 
   constructor(private productService:ProductService, private farmerService:FarmerService, private custService: CustomerService, private orderService: OrderService, private itemService: ItemService, private router:Router) {
     this.isProductFormVisible=false
@@ -79,7 +81,7 @@ export class ProductComponent implements OnInit {
   // }
   }
   addProductToBasket(ProductID:number, BasketID:number, newItem:Item){
-    this.custService.addProductToBasket(BasketID, ProductID).subscribe(
+    this.productService.addProductToBasket(BasketID, ProductID).subscribe(
   
       res =>{
         this.customerProduct = res
@@ -101,7 +103,7 @@ export class ProductComponent implements OnInit {
       )
     })}
   fetchFarmerProductsFromServer(){
-    this.productService.findProductsByFarmerNo(this.currentFarmer.farmerId).subscribe(
+    this.productService.findProductsByFarmerNo(this.currentFarmer.farmerID).subscribe(
       response => {
         this.farmerProducts = response
       }
@@ -114,7 +116,7 @@ export class ProductComponent implements OnInit {
 
   addNewProduct(newProduct:Product){
     this.productService.registerProductsForFarmer(
-      this.currentFarmer.farmerId,newProduct).subscribe(
+      this.currentFarmer.farmerID,newProduct).subscribe(
         response =>{
           this.fetchFarmerProductsFromServer()
         }
@@ -137,11 +139,14 @@ export class ProductComponent implements OnInit {
     // })}
 
   ngOnInit(): void {
- 
+    if(sessionStorage.getItem("productID")==null){
+
+    }
+ else {
 this.productService.getProducts().subscribe(
   res => {this.products=res
     console.log(JSON.stringify(this.products))}
 
   
 )}}
-
+  }

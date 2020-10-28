@@ -21,6 +21,7 @@ export class BasketComponent implements OnInit {
   itemPrice: number
   itemQuantity: number;
   totalPrice: number;
+  newBasket: Basket[];
 
 
   constructor(private basketService: BasketService, private itemService: ItemService) { 
@@ -58,7 +59,7 @@ export class BasketComponent implements OnInit {
   // }
 
   ngOnInit(): void {
-    this.basketService.getItems(10).subscribe(
+    this.basketService.getItems(this.baskeID).subscribe(
     res =>{this.basketItems=res 
     console.log(JSON.stringify(this.basketItems))} 
     

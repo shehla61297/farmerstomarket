@@ -29,8 +29,8 @@ export class FarmerService {
     const params = new URLSearchParams();
     params.set('email', newFarmer.email)
     params.set('password', newFarmer.password)
-    params.set('farmerFirstName', newFarmer.farmerFirstName)
-    params.set('farmerLastName', newFarmer.farmerLastName)
+    params.set('farmerFirstName', newFarmer.farmerForename)
+    params.set('farmerLastName', newFarmer.farmerSurname)
     params.set('location', newFarmer.location)
     params.set('contactNumber', newFarmer.contactNumber)
 
@@ -53,9 +53,7 @@ export class FarmerService {
         }
     )
    }
-   getProducts():Observable<Product[]>{
-    return this.httpsvc.get<Product[]>(this.rootURL+"/product/list")
-  }
+  
   addProductToFarmer(farmerID:number, productID:number):Observable<Product[]>{
     const httpOpts ={
       headers: new HttpHeaders(
@@ -66,7 +64,7 @@ export class FarmerService {
     var reqBody = "farmerID=" + farmerID + "&productID=" + productID
 
     return this.httpsvc.post<Product[]>(
-      this.rootURL + "/farmer_to_product_assignment/", reqBody, httpOpts)
+      this.rootURL + "/farmerProducts/register", reqBody, httpOpts)
   }
 
 
@@ -97,13 +95,55 @@ addProduct(newProduct:Product):Observable<Product>{
        'application/x-www-form-urlencoded;charset=UTF-8'})
   }
 
-  var reqBody="productName="+newProduct.productName+"&productDescription="
+  var reqBody="productID"+newProduct.productID+"productName="+newProduct.productName+"&productDescription="
   +newProduct.productDescription+"&productType="+newProduct.productType+"&productPrice="+newProduct.productPrice+"&productQuantity="+newProduct.productQuantity+"&productWeightKG"+newProduct.productWeightKG
 
+  console.log(reqBody)
+
   return this.httpsvc.post<Product>(
-    this.rootProductURL+"/add",reqBody,httpOpts)
-  
+    this.rootURL+"/product/register",reqBody,httpOpts)
+    
+    
   }
+// addProduct(newProduct: Product) {
+//   const httpOpts = {
+//     headers: new HttpHeaders({"Content-Type":"application/x-www-form-urlencoded"})
+//   }
+//   const params = new URLSearchParams();
+//   params.set('productName', newProduct.productName)
+//   params.set('productDescription', newProduct.productDescription)
+//   params.set('productType', newProduct.productType)
+ 
+
+//   return this.httpsvc.post<Product>(this.rootURL+"/product/register", params.toString(), httpOpts).subscribe(
+//     (res) => console.log(res),
+//     (err) => console.log(err)
+//   );
+
+//   }
+registerProductsForFarmer(farmerID:number,newProduct:Product):Observable<Product>{
+  var contentData = "farmerID="+farmerID
+                    +"&productName="+newProduct.productName
+                    +"&productDescription="+newProduct.productDescription
+                    +"&productType="+newProduct.productType
+                    +"&productPrice="+newProduct.productPrice
+                    +"&productQuantity="+newProduct.productQuantity
+                    +"&productWeightKG="+newProduct.productWeightKG
+
+  const httpOptions={
+    headers: new HttpHeaders(
+      {"Content-Type":"application/x-www-form-urlencoded"})
+  }
+  
+  return this.httpsvc.post<Product>(
+  this.rootURL+"/farmerProducts/register", // URL
+  contentData, // data for the server
+  httpOptions) // header options
+}
+getProducts():Observable<Product[]>{
+  return this.httpsvc.get<Product[]>
+  (this.rootURL+"/product/list")
+}
 
 farmerLogout(){
   localStorage.removeItem("currentFarmer");
