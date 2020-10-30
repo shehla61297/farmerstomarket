@@ -26,10 +26,6 @@ import org.springframework.data.annotation.Transient;
 
 public class Basket {
 
-//	
-	
-	
-//	@FormParam("basketID")
 	int basketID;
 	
 	@FormParam("basketAmount")
@@ -42,7 +38,7 @@ public class Basket {
 			joinColumns= {@JoinColumn(name="fk_basketID")}, 
 			inverseJoinColumns = { @JoinColumn(name = "fk_itemID") } // foreign key column for collection type
 			)
-	@Transient // ignore this property when storing employee data in MongoDB
+	@Transient
 	@XmlTransient // ignore the association property when shared via Service
 	public Set<Item> getItemsAssigned() {
 		return itemsAssigned;
@@ -91,14 +87,12 @@ public class Basket {
 	}
 
 
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + basketAmount;
 		result = prime * result + basketID;
-		result = prime * result + ((itemsAssigned == null) ? 0 : itemsAssigned.hashCode());
-		result = prime * result + ((productAssignedToBasket == null) ? 0 : productAssignedToBasket.hashCode());
 		return result;
 	}
 
@@ -111,19 +105,7 @@ public class Basket {
 		if (getClass() != obj.getClass())
 			return false;
 		Basket other = (Basket) obj;
-		if (basketAmount != other.basketAmount)
-			return false;
 		if (basketID != other.basketID)
-			return false;
-		if (itemsAssigned == null) {
-			if (other.itemsAssigned != null)
-				return false;
-		} else if (!itemsAssigned.equals(other.itemsAssigned))
-			return false;
-		if (productAssignedToBasket == null) {
-			if (other.productAssignedToBasket != null)
-				return false;
-		} else if (!productAssignedToBasket.equals(other.productAssignedToBasket))
 			return false;
 		return true;
 	}

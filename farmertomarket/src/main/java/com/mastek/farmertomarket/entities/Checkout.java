@@ -92,17 +92,12 @@ public class Checkout {
 				+ "]";
 	}
 
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((Transaction == null) ? 0 : Transaction.hashCode());
 		result = prime * result + checkoutID;
-		result = prime * result + ((currentCustomer == null) ? 0 : currentCustomer.hashCode());
-		result = prime * result + ((deliveryDate == null) ? 0 : deliveryDate.hashCode());
-		long temp;
-		temp = Double.doubleToLongBits(totalCost);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
 		return result;
 	}
 
@@ -115,24 +110,7 @@ public class Checkout {
 		if (getClass() != obj.getClass())
 			return false;
 		Checkout other = (Checkout) obj;
-		if (Transaction == null) {
-			if (other.Transaction != null)
-				return false;
-		} else if (!Transaction.equals(other.Transaction))
-			return false;
 		if (checkoutID != other.checkoutID)
-			return false;
-		if (currentCustomer == null) {
-			if (other.currentCustomer != null)
-				return false;
-		} else if (!currentCustomer.equals(other.currentCustomer))
-			return false;
-		if (deliveryDate == null) {
-			if (other.deliveryDate != null)
-				return false;
-		} else if (!deliveryDate.equals(other.deliveryDate))
-			return false;
-		if (Double.doubleToLongBits(totalCost) != Double.doubleToLongBits(other.totalCost))
 			return false;
 		return true;
 	}

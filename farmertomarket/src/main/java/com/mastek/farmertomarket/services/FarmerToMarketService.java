@@ -413,16 +413,16 @@ public Farmer findFarmerID(int farmerID) {
 		return newItem;
 	}
 
-//	@Override
-//	@Transactional
-//	public Iterable<Item> findBasketItems(int basketID) {
-//		Basket currentBask = baskDAO.findById(basketID).get();
-//		int count = currentBask.getItemsAssigned().size();
-//		System.out.println("Basket found: " + currentBask.getBasketID() + " Items in Basket = " + count);
-//
-//		Set<Item> Item = currentBask.getItemsAssigned();
-//		return Item;
-//	}
+	@Override
+	@Transactional
+	public Iterable<Item> findBasketItems(int basketID) {
+		Basket currentBask = baskDAO.findById(basketID).get();
+		int count = currentBask.getItemsAssigned().size();
+		System.out.println("Basket found: " + currentBask.getBasketID() + " Items in Basket = " + count);
+
+		Set<Item> Item = currentBask.getItemsAssigned();
+		return Item;
+	}
 
 	@Override
 	@Transactional

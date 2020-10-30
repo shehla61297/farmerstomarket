@@ -24,7 +24,7 @@ public class Product {
  
 	
 	
-	@FormParam("productID")
+
 	int productID;
 	
 	@FormParam("productName")
@@ -143,23 +143,12 @@ public class Product {
 		this.productWeightKG = productWeightKG;
 	}
 
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((Item == null) ? 0 : Item.hashCode());
-		result = prime * result + ((basketProducts == null) ? 0 : basketProducts.hashCode());
-		result = prime * result + ((farmerProducts == null) ? 0 : farmerProducts.hashCode());
-		result = prime * result + ((productDescription == null) ? 0 : productDescription.hashCode());
 		result = prime * result + productID;
-		result = prime * result + ((productName == null) ? 0 : productName.hashCode());
-		long temp;
-		temp = Double.doubleToLongBits(productPrice);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
-		result = prime * result + productQuantity;
-		result = prime * result + ((productType == null) ? 0 : productType.hashCode());
-		temp = Double.doubleToLongBits(productWeightKG);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
 		return result;
 	}
 
@@ -172,40 +161,7 @@ public class Product {
 		if (getClass() != obj.getClass())
 			return false;
 		Product other = (Product) obj;
-		if (Item == null) {
-			if (other.Item != null)
-				return false;
-		} else if (!Item.equals(other.Item))
-			return false;
-		if (basketProducts == null) {
-			if (other.basketProducts != null)
-				return false;
-		} else if (!basketProducts.equals(other.basketProducts))
-			return false;
-		if (farmerProducts == null) {
-			if (other.farmerProducts != null)
-				return false;
-		} else if (!farmerProducts.equals(other.farmerProducts))
-			return false;
-		if (productDescription == null) {
-			if (other.productDescription != null)
-				return false;
-		} else if (!productDescription.equals(other.productDescription))
-			return false;
 		if (productID != other.productID)
-			return false;
-		if (productName == null) {
-			if (other.productName != null)
-				return false;
-		} else if (!productName.equals(other.productName))
-			return false;
-		if (Double.doubleToLongBits(productPrice) != Double.doubleToLongBits(other.productPrice))
-			return false;
-		if (productQuantity != other.productQuantity)
-			return false;
-		if (productType != other.productType)
-			return false;
-		if (Double.doubleToLongBits(productWeightKG) != Double.doubleToLongBits(other.productWeightKG))
 			return false;
 		return true;
 	}

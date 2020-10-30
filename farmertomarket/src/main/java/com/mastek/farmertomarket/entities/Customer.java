@@ -25,31 +25,32 @@ public class Customer {
 	
 
 
+	@FormParam("customerID")
 	int customerID;
-	
-	@FormParam("customerEmail")
-	String customerEmail;
 
 	@FormParam("customerForename")
 	String customerForename;
-	
+
 	@FormParam("customerSurname")
 	String customerSurname;
-	
+
 	@FormParam("customerAddress")
 	String customerAddress;
-	
+
 	@FormParam("customerBalance")
 	double customerBalance;
-	
+
 	@FormParam("customerDOB")
 	String customerDOB;
-	
+
 	@FormParam("customerUsername")
 	String customerUsername;
-	
+
 	@FormParam("customerPassword")
 	String customerPassword;
+
+	@FormParam("customerEmail")
+	String customerEmail;
 
 	Set<Checkout> customerCheckouts = new HashSet<>();
 
@@ -63,16 +64,16 @@ public class Customer {
 		this.customerCheckouts = customerCheckouts;
 	}
 
-	Set<Item> itemsCustomers = new HashSet<>();
+	Set<Item> ItemsCustomers = new HashSet<>();
 
 	@ManyToMany(mappedBy = "customersAssigned")
 	@XmlTransient
 	public Set<Item> getItemsCustomers() {
-		return itemsCustomers;
+		return ItemsCustomers;
 	}
 
-	public void setItemsCustomers(Set<Item> ItemsCustomers) {
-		this.itemsCustomers = ItemsCustomers;
+	public void setItemsCustomers(Set<Item> itemsCustomers) {
+		ItemsCustomers = itemsCustomers;
 	}
 	@Id												    // Marking the property as primary key for the table 
 	@Column(name="customerID")							// using column to provide the default column name
@@ -142,8 +143,6 @@ public class Customer {
 		this.customerPassword = customerPassword;
 	}
 
-
-
 	public String getCustomerEmail() {
 		return customerEmail;
 	}
@@ -158,22 +157,19 @@ public class Customer {
 	}
 
 	@Override
+	public String toString() {
+		return "Customer [customerID=" + customerID + ", customerForename=" + customerForename + ", customerSurname="
+				+ customerSurname + ", customerAddress=" + customerAddress + ", customerBalance=" + customerBalance
+				+ ", customerDOB=" + customerDOB + ", customerUsername=" + customerUsername + ", customerPassword="
+				+ customerPassword + ", customerEmail=" + customerEmail + ", customerCheckouts=" + customerCheckouts
+				+ ", ItemsCustomers=" + ItemsCustomers + "]";
+	}
+
+	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((customerAddress == null) ? 0 : customerAddress.hashCode());
-		long temp;
-		temp = Double.doubleToLongBits(customerBalance);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
-		result = prime * result + ((customerCheckouts == null) ? 0 : customerCheckouts.hashCode());
-		result = prime * result + ((customerDOB == null) ? 0 : customerDOB.hashCode());
-		result = prime * result + ((customerEmail == null) ? 0 : customerEmail.hashCode());
-		result = prime * result + ((customerForename == null) ? 0 : customerForename.hashCode());
 		result = prime * result + customerID;
-		result = prime * result + ((customerPassword == null) ? 0 : customerPassword.hashCode());
-		result = prime * result + ((customerSurname == null) ? 0 : customerSurname.hashCode());
-		result = prime * result + ((customerUsername == null) ? 0 : customerUsername.hashCode());
-		result = prime * result + ((itemsCustomers == null) ? 0 : itemsCustomers.hashCode());
 		return result;
 	}
 
@@ -186,65 +182,9 @@ public class Customer {
 		if (getClass() != obj.getClass())
 			return false;
 		Customer other = (Customer) obj;
-		if (customerAddress == null) {
-			if (other.customerAddress != null)
-				return false;
-		} else if (!customerAddress.equals(other.customerAddress))
-			return false;
-		if (Double.doubleToLongBits(customerBalance) != Double.doubleToLongBits(other.customerBalance))
-			return false;
-		if (customerCheckouts == null) {
-			if (other.customerCheckouts != null)
-				return false;
-		} else if (!customerCheckouts.equals(other.customerCheckouts))
-			return false;
-		if (customerDOB == null) {
-			if (other.customerDOB != null)
-				return false;
-		} else if (!customerDOB.equals(other.customerDOB))
-			return false;
-		if (customerEmail == null) {
-			if (other.customerEmail != null)
-				return false;
-		} else if (!customerEmail.equals(other.customerEmail))
-			return false;
-		if (customerForename == null) {
-			if (other.customerForename != null)
-				return false;
-		} else if (!customerForename.equals(other.customerForename))
-			return false;
 		if (customerID != other.customerID)
 			return false;
-		if (customerPassword == null) {
-			if (other.customerPassword != null)
-				return false;
-		} else if (!customerPassword.equals(other.customerPassword))
-			return false;
-		if (customerSurname == null) {
-			if (other.customerSurname != null)
-				return false;
-		} else if (!customerSurname.equals(other.customerSurname))
-			return false;
-		if (customerUsername == null) {
-			if (other.customerUsername != null)
-				return false;
-		} else if (!customerUsername.equals(other.customerUsername))
-			return false;
-		if (itemsCustomers == null) {
-			if (other.itemsCustomers != null)
-				return false;
-		} else if (!itemsCustomers.equals(other.itemsCustomers))
-			return false;
 		return true;
-	}
-
-	@Override
-	public String toString() {
-		return "Customer [customerID=" + customerID + ", customerEmail=" + customerEmail + ", customerForename="
-				+ customerForename + ", customerSurname=" + customerSurname + ", customerAddress=" + customerAddress
-				+ ", customerBalance=" + customerBalance + ", customerDOB=" + customerDOB + ", customerUsername="
-				+ customerUsername + ", customerPassword=" + customerPassword + ", customerCheckouts="
-				+ customerCheckouts + ", itemsCustomers=" + itemsCustomers + "]";
 	}
 
 }

@@ -1,5 +1,6 @@
 package com.mastek.farmertomarket;
 
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -10,6 +11,7 @@ import com.mastek.farmertomarket.dao.FarmerJPADAO;
 import com.mastek.farmertomarket.dao.ItemJPADAO;
 import com.mastek.farmertomarket.dao.ProductJPADAO;
 import com.mastek.farmertomarket.dao.TransactionJPADAO;
+import com.mastek.farmertomarket.entities.Item;
 import com.mastek.farmertomarket.services.FarmerToMarketService;
 
 //Initialize the JUnit Test with Spring Boot Application Environment
@@ -41,16 +43,16 @@ class FarmertomarketApplicationTests {
 	
 	@Autowired
 	FarmerToMarketService ftomSvc;
-}
-	
+
 //	@Test
 //	void testCheckoutDAOAdd() {
 //		Checkout check = new Checkout();
 //		check.setDeliveryDate("21/09/2020");
 //		check.setTotalCost(22.29);
-//		
+//
 //		check = checkDAO.save(check);
 //	}
+//
 //	@Test
 //	void testBasketDAOAdd() {
 //		Basket bask = new Basket();
@@ -70,9 +72,9 @@ class FarmertomarketApplicationTests {
 //		cust.setCustomerPassword("786786");
 //		cust.setCustomerEmail("mgoldsmith94@gmail.com");
 //		cust = custDAO.save(cust);
-//		
+//
 //	}
-//	
+//
 //	@Test
 //	void testFarmerDAOAdd() {
 //		Farmer farm = new Farmer();
@@ -84,19 +86,22 @@ class FarmertomarketApplicationTests {
 //		farm.setFarmerUsername("BerryKnotFarm");
 //		farm.setFarmerPassword("BKnot123");
 //		farm.setFarmerEmail("HPrince123@example.com");
-//		
+//
 //		farm = farmDAO.save(farm);
 //	}
-//	@Test
-//	void testItemDAOAdd() {
-//		Item it = new Item();
-//		it.setItemName("Potatoes");
-//		it.setItemPrice(0.59);
-//		it.setItemQuantity(10.00);
-//		
-//		it = itemDAO.save(it);
-//		
-//	}
+//
+	@Test
+	void testItemDAOAdd() {
+		Item it = new Item();
+		it.setItemName("Cheese");
+		it.setItemPrice(2.50);
+		it.setItemQuantity(2.00);
+
+		it = itemDAO.save(it);
+
+	}
+}
+//
 //	@Test
 //	void testProductDAOAdd() {
 //		Product prod = new Product();
@@ -106,30 +111,27 @@ class FarmertomarketApplicationTests {
 //		prod.setProductPrice(0.59);
 //		prod.setProductQuantity(100);
 //		prod.setProductWeightKG(5.00);
-//		
+//
 //		prod = prodDAO.save(prod);
 //	}
-//	
+//
 //	@Test
 //	void testTransactionDAOAdd() {
 //		Transaction tran = new Transaction();
 //		tran.setTransactionDate("22/09/2020");
 //		tran.setTransactionAmount(10.00);
-//		
+//
 //		tran = tranDAO.save(tran);
 //	}
-//	
+//
 //	@Test
 //	void testAssignCheckoutToCustomers() {
 //		Checkout check = ftomSvc.assignCheckoutToCustomers(25, 6);
-//		 
+//
 //		assertNotNull(check.getCurrentCustomer(), "Checkout Not Assigned");
-//		
-//		 
+//
 //		System.out.println("Checkout assigned to customer");
 //	}
-//	
-//
 //
 //	@Test
 //	void testAssignProductToBasket() {
@@ -139,7 +141,6 @@ class FarmertomarketApplicationTests {
 //
 //		System.out.println("Product Assigned to basket");
 //	}
-//}
 //
 //	@Test
 //	void testAssignTransactionToCheckout() {
@@ -185,7 +186,6 @@ class FarmertomarketApplicationTests {
 //		Product prod = ftomSvc.assignProductToItem(48, 99);
 //
 //		assertNotNull(prod.getItem(), "Product  Not Assigned");
-//
 //
 //	}
 //
@@ -233,7 +233,7 @@ class FarmertomarketApplicationTests {
 //		System.out.println("Product Details Updated");
 //
 //		prod = prodDAO.save(prod);
-//}
+//	}
 //
 //	@Test
 //	void testUpdateTransactionDAO() {

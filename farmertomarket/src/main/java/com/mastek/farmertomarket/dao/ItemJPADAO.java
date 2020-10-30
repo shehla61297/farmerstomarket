@@ -3,6 +3,7 @@ package com.mastek.farmertomarket.dao;
 
 
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 
 import com.mastek.farmertomarket.entities.Item;
 
@@ -10,6 +11,6 @@ import com.mastek.farmertomarket.entities.Item;
 
 public interface ItemJPADAO extends CrudRepository<Item, Integer>{
 
-//	Iterable<Item> findBasketItems(@Param("basketID") int basketID);
+	Iterable<Item> basketItems(@Param("basketID") int basketID);
 
 }

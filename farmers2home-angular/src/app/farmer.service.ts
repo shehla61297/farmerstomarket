@@ -78,7 +78,7 @@ export class FarmerService {
     params.set('email', email)
     params.set('password', password) 
     
-    return this.httpsvc.post(this.rootURL+"/farmers/login", params.toString(), httpOpts).subscribe(
+    return this.httpsvc.post(this.rootURL+"/farmer/login", params.toString(), httpOpts).subscribe(
       (result:any) => {
         if(result){
         localStorage.setItem('currentFarmer', JSON.stringify(result));
@@ -87,7 +87,12 @@ export class FarmerService {
         }
       }
     )
+}farmerLogout(){
+  localStorage.removeItem("currentFarmer");
+  this.isLoggedIn = false;
+return this.httpsvc.get(this.rootURL)
 }
+
 addProduct(newProduct:Product):Observable<Product>{
   const httpOpts ={
     headers: new HttpHeaders(
@@ -95,7 +100,7 @@ addProduct(newProduct:Product):Observable<Product>{
        'application/x-www-form-urlencoded;charset=UTF-8'})
   }
 
-  var reqBody="productID"+newProduct.productID+"productName="+newProduct.productName+"&productDescription="
+  var reqBody="productID="+newProduct.productID+"&productName="+newProduct.productName+"&productDescription="
   +newProduct.productDescription+"&productType="+newProduct.productType+"&productPrice="+newProduct.productPrice+"&productQuantity="+newProduct.productQuantity+"&productWeightKG"+newProduct.productWeightKG
 
   console.log(reqBody)
@@ -145,10 +150,6 @@ getProducts():Observable<Product[]>{
   (this.rootURL+"/product/list")
 }
 
-farmerLogout(){
-  localStorage.removeItem("currentFarmer");
-  this.isLoggedIn = false;
-}
 
 checkIsLoggedIn(){
   if(localStorage.getItem("currentFarmer")){

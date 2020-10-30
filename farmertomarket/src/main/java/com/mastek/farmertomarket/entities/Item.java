@@ -31,7 +31,7 @@ import org.springframework.data.annotation.Transient;
 public class Item {
 	
 		
-	@FormParam("itemID")
+
 	int itemID;
 	
 	@FormParam("itemName")
@@ -129,20 +129,12 @@ public class Item {
 				+ Product + "]";
 	}
 
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((Product == null) ? 0 : Product.hashCode());
-		result = prime * result + ((basketItems == null) ? 0 : basketItems.hashCode());
-		result = prime * result + ((customersAssigned == null) ? 0 : customersAssigned.hashCode());
 		result = prime * result + itemID;
-		result = prime * result + ((itemName == null) ? 0 : itemName.hashCode());
-		long temp;
-		temp = Double.doubleToLongBits(itemPrice);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
-		temp = Double.doubleToLongBits(itemQuantity);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
 		return result;
 	}
 
@@ -155,31 +147,7 @@ public class Item {
 		if (getClass() != obj.getClass())
 			return false;
 		Item other = (Item) obj;
-		if (Product == null) {
-			if (other.Product != null)
-				return false;
-		} else if (!Product.equals(other.Product))
-			return false;
-		if (basketItems == null) {
-			if (other.basketItems != null)
-				return false;
-		} else if (!basketItems.equals(other.basketItems))
-			return false;
-		if (customersAssigned == null) {
-			if (other.customersAssigned != null)
-				return false;
-		} else if (!customersAssigned.equals(other.customersAssigned))
-			return false;
 		if (itemID != other.itemID)
-			return false;
-		if (itemName == null) {
-			if (other.itemName != null)
-				return false;
-		} else if (!itemName.equals(other.itemName))
-			return false;
-		if (Double.doubleToLongBits(itemPrice) != Double.doubleToLongBits(other.itemPrice))
-			return false;
-		if (Double.doubleToLongBits(itemQuantity) != Double.doubleToLongBits(other.itemQuantity))
 			return false;
 		return true;
 	}

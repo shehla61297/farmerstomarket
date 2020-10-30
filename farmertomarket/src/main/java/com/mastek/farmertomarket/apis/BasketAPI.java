@@ -35,10 +35,10 @@ public interface BasketAPI {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Basket registerNewBasket(@BeanParam Basket newBasket);
 	
-//	@GET
-//	@Path("/basketItems/{basketID}")
-//	@Produces({MediaType.APPLICATION_JSON})
-//	public Iterable<Item> findBasketItems(@PathParam("basketID") int basketID);
+	@GET
+	@Path("/basketItems/{basketID}")
+	@Produces({ MediaType.APPLICATION_JSON })
+	public Iterable<Item> findBasketItems(@PathParam("basketID") int basketID);
 	
 	@POST // http method Post used to send data in requests
 	@Path("/basketItems/register")

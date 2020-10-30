@@ -151,16 +151,7 @@ public class Farmer {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((FarmType == null) ? 0 : FarmType.hashCode());
-		result = prime * result + ((farmLocation == null) ? 0 : farmLocation.hashCode());
-		result = prime * result + ((farmName == null) ? 0 : farmName.hashCode());
-		result = prime * result + ((farmerEmail == null) ? 0 : farmerEmail.hashCode());
-		result = prime * result + ((farmerForename == null) ? 0 : farmerForename.hashCode());
 		result = prime * result + farmerID;
-		result = prime * result + ((farmerPassword == null) ? 0 : farmerPassword.hashCode());
-		result = prime * result + ((farmerSurname == null) ? 0 : farmerSurname.hashCode());
-		result = prime * result + ((farmerUsername == null) ? 0 : farmerUsername.hashCode());
-		result = prime * result + ((productsAssigned == null) ? 0 : productsAssigned.hashCode());
 		return result;
 	}
 
@@ -173,49 +164,7 @@ public class Farmer {
 		if (getClass() != obj.getClass())
 			return false;
 		Farmer other = (Farmer) obj;
-		if (FarmType != other.FarmType)
-			return false;
-		if (farmLocation == null) {
-			if (other.farmLocation != null)
-				return false;
-		} else if (!farmLocation.equals(other.farmLocation))
-			return false;
-		if (farmName == null) {
-			if (other.farmName != null)
-				return false;
-		} else if (!farmName.equals(other.farmName))
-			return false;
-		if (farmerEmail == null) {
-			if (other.farmerEmail != null)
-				return false;
-		} else if (!farmerEmail.equals(other.farmerEmail))
-			return false;
-		if (farmerForename == null) {
-			if (other.farmerForename != null)
-				return false;
-		} else if (!farmerForename.equals(other.farmerForename))
-			return false;
 		if (farmerID != other.farmerID)
-			return false;
-		if (farmerPassword == null) {
-			if (other.farmerPassword != null)
-				return false;
-		} else if (!farmerPassword.equals(other.farmerPassword))
-			return false;
-		if (farmerSurname == null) {
-			if (other.farmerSurname != null)
-				return false;
-		} else if (!farmerSurname.equals(other.farmerSurname))
-			return false;
-		if (farmerUsername == null) {
-			if (other.farmerUsername != null)
-				return false;
-		} else if (!farmerUsername.equals(other.farmerUsername))
-			return false;
-		if (productsAssigned == null) {
-			if (other.productsAssigned != null)
-				return false;
-		} else if (!productsAssigned.equals(other.productsAssigned))
 			return false;
 		return true;
 	}
