@@ -20,26 +20,27 @@ export class CustomerService {
 
     this.rootURL = "http://localhost:7777/farmertomarket/"
   }
+  
 
-  addNewCustomer(newCustomer: Customer){
-    const httpOpts = {
-      headers: new HttpHeaders({"Content-Type":"application/x-www-form-urlencoded"})
-    }
+  // addNewCustomer(newCustomer: Customer){
+  //   const httpOpts = {
+  //     headers: new HttpHeaders({"Content-Type":"application/x-www-form-urlencoded"})
+  //   }
     
-    const params = new URLSearchParams();
-    params.set('customerEmail', newCustomer.customerEmail)
-    params.set('customerForename', newCustomer.customerForename)
-    params.set('customerSurname', newCustomer.customerSurname)
-    params.set('customerAddress', newCustomer.customerAddress)
-    params.set('customerDOB', newCustomer.customerDOB)
-    params.set('customerUsername', newCustomer.customerUsername)
-    params.set('customerPassword', newCustomer.customerPassword)
+  //   const params = new URLSearchParams();
+  //   params.set('customerEmail', newCustomer.customerEmail)
+  //   params.set('customerForename', newCustomer.customerForename)
+  //   params.set('customerSurname', newCustomer.customerSurname)
+  //   params.set('customerAddress', newCustomer.customerAddress)
+  //   params.set('customerDOB', newCustomer.customerDOB)
+  //   params.set('customerUsername', newCustomer.customerUsername)
+  //   params.set('customerPassword', newCustomer.customerPassword)
 
-    return this.httpsvc.post<Customer>(this.rootURL+"customer/register", params.toString(), httpOpts).subscribe(
-      (res) => console.log(res),
-      (err) => console.log(err)
-    );
-  }
+  //   return this.httpsvc.post<Customer>(this.rootURL+"customer/register", params.toString(), httpOpts).subscribe(
+  //     (res) => console.log(res),
+  //     (err) => console.log(err)
+  //   );
+  // }
 
   async getCustomerLogin(customerEmail: string, customerPassword: string){
     const httpOpts = {
@@ -89,5 +90,30 @@ export class CustomerService {
       return false;
     }
   }
+  getCustomer():Observable<Customer[]> {
+    return this.httpsvc.get<Customer[]>(this.rootURL+"customer/list")
+  
+  }
+  getCustomerByID(customerID:number):Observable<Customer[]>{
+    return this.httpsvc.get<Customer[]>(this.rootURL+"customer/find/"+customerID)
+  }
+  
+  registerNewCustomer(newCustomer:Customer): Observable<Customer> {
+    const httpOpts = {
+      headers: new HttpHeaders(
+        {'Content-Type':
+      'application/x-www-form-urlencoded;charset=UTF-8'})
+    }
+    var contentData="customerForename=" +newCustomer.customerForename
+    +"&customerSurname=" + newCustomer.customerSurname
+    +"&customerAddress=" + newCustomer.customerAddress
+    +"&customerDOB=" + newCustomer.customerDOB
+    +"&customerUsername=" + newCustomer.customerUsername
+    +"&customerPassword=" + newCustomer.customerPassword
+    
+    return this.httpsvc.post<Customer>(
+  
+      this.rootURL+"customer/register",  contentData, httpOpts)
+  }
+  }
 
-}

@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { from } from 'rxjs';
 import { Contact } from '../contact';
 import { ContactService} from '../contact.service'
+import { CustomerService } from '../customer.service';
+import { FarmerService } from '../farmer.service';
 
 @Component({
   selector: 'app-contact-us',
@@ -22,7 +24,7 @@ export class ContactUsComponent implements OnInit {
 //   email: string;
 //   message: string;
 
-  constructor(private formBuilder: FormBuilder, private ContactService: ContactService, private router:Router) { 
+  constructor(private formBuilder: FormBuilder, private ContactService: ContactService,public custService: CustomerService, public farmerService: FarmerService, private router:Router) { 
 
     this.contact=[]
     this.newContact=[]

@@ -1,3 +1,5 @@
+
+
 body {
     font-family: Arial;
     font-size: 17px;
@@ -30,6 +32,7 @@ body {
     -ms-flex: 75%; /* IE10 */
     flex: 75%;
   }
+  
   
   .col-25,
   .col-50,

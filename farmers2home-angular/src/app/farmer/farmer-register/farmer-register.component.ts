@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, ValidatorFn, AbstractControl } from '@angular/forms';
 import { Router } from '@angular/router';
+import { CustomerService } from 'src/app/customer.service';
 import { Farmer } from 'src/app/farmer';
 import { FarmerService } from 'src/app/farmer.service';
 
@@ -14,7 +15,7 @@ export class FarmerRegisterComponent implements OnInit {
   farmerRegisterForm: FormGroup;
   submitted = false;
 
-  constructor(private formBuilder: FormBuilder, private farmerService: FarmerService, private router:Router) {
+  constructor(private formBuilder: FormBuilder, public farmerService: FarmerService, public custService: CustomerService, public customerService:CustomerService, private router:Router) {
 
    }
 

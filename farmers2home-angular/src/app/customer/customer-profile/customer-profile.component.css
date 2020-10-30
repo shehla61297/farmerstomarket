@@ -16,3 +16,9 @@ caption{
 .orderRow:hover{
     background-color: #bddbf0;
 }
+.account-placeholder{
+    margin-left: 13cm;
+    text-align: center;
+    margin-top: 0;
+
+}

@@ -6,6 +6,7 @@ import { Checkout } from 'src/app/checkout';
 import { Customer } from 'src/app/customer';
 import { CustomerService } from 'src/app/customer.service';
 import { Farmer } from 'src/app/farmer';
+import { FarmerService } from 'src/app/farmer.service';
 import { Item } from 'src/app/item';
 import { ItemService } from 'src/app/item.service';
 import { Order } from 'src/app/Order';
@@ -30,7 +31,7 @@ export class CustomerProfileComponent implements OnInit {
 
   headers = ["transactionID", "itemName", "transactionDate", "transactionAmount"]
 
-  constructor(public custService:CustomerService, private itemService: ItemService, private basketService: BasketService, private router:Router) {
+  constructor(public custService:CustomerService, private itemService: ItemService, public farmerService: FarmerService, private basketService: BasketService, private router:Router) {
    
   this.Customers=[]
   this.Products=[]

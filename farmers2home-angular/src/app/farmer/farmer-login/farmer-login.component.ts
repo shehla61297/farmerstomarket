@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { CustomerService } from 'src/app/customer.service';
 import { FarmerService } from 'src/app/farmer.service';
 
 @Component({
@@ -14,7 +15,7 @@ export class FarmerLoginComponent implements OnInit {
   emailAddress: string;
   password: string;
 
-  constructor(private formBuilder: FormBuilder,private farmerService: FarmerService, private router:Router) {
+  constructor(private formBuilder: FormBuilder,public farmerService: FarmerService, public custService: CustomerService, public customerService: CustomerService, private router:Router) {
    }
 
   ngOnInit(): void {

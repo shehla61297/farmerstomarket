@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { Payment } from 'src/app/payment';
 import { PaymentService } from '../payment.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { CustomerService } from 'src/app/customer.service';
+import { FarmerService } from 'src/app/farmer.service';
 
 @Component({
   selector: 'app-payment-checkout',
@@ -14,7 +16,7 @@ export class PaymentCheckoutComponent implements OnInit {
 
   paymentRegisterForm: FormGroup;
 
-  constructor(private formBuilder:FormBuilder, private paymentService:PaymentService, private router:Router) { }
+  constructor(private formBuilder:FormBuilder, private paymentService:PaymentService, public custService: CustomerService, public farmerService: FarmerService, private router:Router) { }
 
   addNewPayment(newPayment:Payment){
     this.paymentService.addNewPayment(newPayment);

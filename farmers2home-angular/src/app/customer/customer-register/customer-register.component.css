@@ -2,7 +2,96 @@
     width: 50%;
     margin: auto;
     color: black;
+    border: 1cm;
+    border-color: green;
 }
+.bg-top{
+    background-color:#82ae46 !important;
+    font-size: 20px;
+}
+.text{
+    
+    color:white;
+    font-size: 15px;
+    font-family:'Poppins', sans-serif;
+}
+.ftco-navbar-light{
+    background: transparent !important;
+    z-index: 3;
+    padding: 0;
+    
+}
+.navbar-brand{
+    font-weight: 760;
+    font-size: 25px;
+    text-transform: uppercase;
+    display: inline-block;
+    padding-top: 0.3125rem;
+    padding-bottom: 0.3125rem;
+    margin-right: 1rem;
+    line-height: inherit;
+    white-space: nowrap;
+    
+}
+.ftco-navbar-light .navbar-nav>
+.nav-item> .nav-link .navbar-brand{
+    font-size: 15px;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    opacity: 1 !important;
+   
+
+}
+h5 {
+    display: inline-block;
+    padding: 10px;
+    background: #B9121B;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+  
+  .p {
+    text-align: center;
+    padding-top: 50px;
+    font-size: 15px;
+  }
+  .col-md-12{
+      text-align:bottom;
+      color:#82ae46;
+      padding: 10rem;
+  }
+  .carousel-fade .carousel-item {
+	opacity: 0;
+	transition-duration: .6s;
+	transition-property: opacity;
+}
+
+.carousel-fade .carousel-item.active,
+.carousel-fade .carousel-item-next.carousel-item-left,
+.carousel-fade .carousel-item-prev.carousel-item-right {
+	opacity: 1;
+}
+
+.carousel-fade .active.carousel-item-left,
+.carousel-fade .active.carousel-item-right {
+	opacity: 0;
+}
+
+.carousel-fade .carousel-item-next,
+.carousel-fade .carousel-item-prev,
+.carousel-fade .carousel-item.active,
+.carousel-fade .active.carousel-item-left,
+.carousel-fade .active.carousel-item-prev {
+	transform: translateX(0);
+	transform: translate3d(0, 0, 0);
+}
+
+
 
 h2{
     text-align: center;
@@ -10,4 +99,55 @@ h2{
 
 .card{
     border-radius: 25px;
+}
+.form-group{
+    background-color: lightgreen;
+    color: forestgreen;
+    size: 5cm;
+    align-items: center;
+    font-size: large;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    size: 5cm;
+    align-self: center;
+}
+.col-md-6{
+    font-size: x-large;
+    margin-left: 9cm;
+    tab-size: 5cm;
+    size:5cm;
+    align-self: center;
+}
+.heading{
+    text-align: center;
+    font-size: xx-large;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: green;
+    font-weight: bolder;
+    background-color: rgb(227, 255, 190);
+}
+
+.register-heading{
+    /* text-align: inherit; */
+    font-size: x-large;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: green;
+    font-weight: bolder;
+    margin-right: 10cm;
+    margin-left: 10cm;
+}
+.btnSubmit{
+    color: blueviolet;
+    margin-left: 17cm;
+    border: 1cm;
+    border-color: green;
+
+}
+.account-placeholder{
+    margin-left: 15cm;
+    text-align: center;
+    margin-top: 0;
+
+}
+.customer-register-page{
+    background-color: rgb(227, 255, 190);
 }

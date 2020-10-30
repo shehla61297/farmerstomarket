@@ -1,5 +1,6 @@
 .basket-items{
     text-align: center;
+    font-size: 2rem;
 
 
 }
@@ -7,3 +8,42 @@
     align-self: center;
     margin-left: 0.5cm;
 }
+.basket-total{
+    text-align: center;
+    font-size: x-large;
+}
+
+.col{
+    align-content: center;
+    text-align: center;
+}
+.total-price{
+   
+   text-align: center;
+   font-size: large;
+}
+.total{
+    align-self: center;
+}
+.basket-button-checkout{
+    
+    align-self: flex-start;
+    margin-left: 26.8cm;
+    margin-right: 0%;
+    background-color: green;
+    color: white;
+    font-size: medium;
+    size: inherit;
+    
+    }
+ .basket-button-goback{
+    
+       
+
+        align-self: flex-end;
+        margin-left: 0.5cm;
+        background-color: green;
+        color: white;
+        font-size: large;
+        size: inherit;
+    }

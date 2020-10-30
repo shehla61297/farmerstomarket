@@ -4,5 +4,5 @@ export interface BasketItems{
     itemName: string
     itemQuantity: number
     itemPrice: number
-    selectedQuantity: number
+    // selectedQuantity: number
 }

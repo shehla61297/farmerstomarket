@@ -11,6 +11,7 @@ import { Order } from 'src/app/Order';
 import { orderProducts } from 'src/app/orderProducts';
 import { Basket } from 'src/app/basket';
 import { BasketProduct } from 'src/app/basketProducts';
+import { CustomerService } from 'src/app/customer.service';
 
 @Component({
   selector: 'app-farmer-profile',
@@ -41,7 +42,7 @@ export class FarmerProfileComponent implements OnInit {
   basketProducts: BasketProduct[]
   itemService: any;
 
-  constructor( private farmerService:FarmerService, private productService:ProductService, itemService:ItemService, basketService:BasketService, private router:Router) { 
+  constructor( public farmerService:FarmerService, private productService:ProductService, public custService: CustomerService, itemService:ItemService, basketService:BasketService, public router:Router) { 
     this.Products=[]
     this.Farmers=[]
     this.farmerProducts=[]

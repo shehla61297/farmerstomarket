@@ -32,14 +32,14 @@ h2{
      align-items: center;
  }
  .add-new-product{
-    align-self: center;
-    margin-left: 14.6cm;
+    margin-inline-start: 39%;
+    
     background-color: green;
     color: white;
  }
 .add-new-product-form{
-    align-self: center;
-    margin-left: 5cm;
+    align-self: inherit;
+    
 }
 .no-border{
     align-self: center;

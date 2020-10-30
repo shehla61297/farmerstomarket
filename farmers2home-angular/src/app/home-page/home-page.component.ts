@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { BasketService } from '../basket.service';
+import { CustomerService } from '../customer.service';
+import { FarmerService } from '../farmer.service';
 
 @Component({
   selector: 'app-home-page',
@@ -7,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomePageComponent implements OnInit {
 
-  constructor() { }
+  constructor( public custService: CustomerService, public customerService: CustomerService, public farmerService: FarmerService, basketService:BasketService) { }
 
   ngOnInit(): void {
   }

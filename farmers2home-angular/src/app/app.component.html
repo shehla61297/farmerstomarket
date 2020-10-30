@@ -83,10 +83,10 @@
             <i class="fa fa-user"></i> Customers
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" routerLink="/order-items">Profile</a>
+              <a class="dropdown-item" routerLink="/customer/profile">Profile</a>
               <div class="dropdown-divider"></div>
             <a class="dropdown-item" routerLink="/customer/login">Log In</a>
-            <a class="dropdown-item" routerLink="/farmers/login">Register</a>
+            <a class="dropdown-item" routerLink="/customer/register">Register</a>
             <a class="dropdown-item" routerLink="/customer/login" *ngIf="custService.isLoggedIn" (click)="custService.customerLogout()">Logout</a>
           </div>  
         </li>
@@ -97,9 +97,9 @@
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="/farmers/profile">My Products</a>
               <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="/farmers/login">Log In</a>
-            <a class="dropdown-item" href="/farmers/register">Register</a>
-            <a class="dropdown-item" href="/farmers/login" *ngIf="farmerService.isLoggedIn" (click)="farmerService.farmerLogout()">Logout</a>
+            <a class="dropdown-item" routerLink="/farmers/login">Log In</a>
+            <a class="dropdown-item" routerLink="/farmers/register">Register</a>
+            <a class="dropdown-item" routerLink="/" *ngIf="farmerService.isLoggedIn" (click)="farmerService.farmerLogout()">Logout</a>
           </div>  
         </li>
         <li class="nav-item dropdown">

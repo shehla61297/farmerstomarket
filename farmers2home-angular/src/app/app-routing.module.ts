@@ -20,59 +20,67 @@ import { AboutUsComponent } from './about-us/about-us.component';
 import { OrderItemsComponent } from './order-items/order-items.component';
 import { BasketComponent } from './basket/basket.component';
 import { ItemComponent } from './item/item.component';
+import { HomePageComponent } from './home-page/home-page.component';
 
 
 const routes: Routes = [
   { path: 'product', component: ProductComponent},
   {path: 'about-us', component: AboutUsComponent},
   {path: 'order-items', component:OrderItemsComponent},
-  
+  {
+    path: '',
+    pathMatch: 'full',
+    component: HomePageComponent
+  },
   { path: 'customer', component: CustomerComponent,
   children: [
     {
       path: 'profile',
+      pathMatch: 'full',
       component: CustomerProfileComponent,
     },
     {
       path: 'register',
+      pathMatch: 'full',
       component: CustomerRegisterComponent,
     },
     {
       path: 'login',
+      pathMatch: 'full',
       component: CustomerLoginComponent,
     }]
    },
-   { path: 'farmers', component: FarmerComponent,
+   { path: 'farmer',   component: FarmerComponent,
    children: [
      {
-       path: 'profile',
+       path: 'profile',  pathMatch: 'full',
        component: FarmerProfileComponent,
      },
      {
-       path: 'register',
+       path: 'register',  pathMatch: 'full',
        component: FarmerRegisterComponent,
      },
      {
-       path: 'login',
+       path: 'login',  pathMatch: 'full',
        component: FarmerLoginComponent,
      }]
     },
   {
-      path: 'payment-checkout',
+      path: 'payment-checkout',  pathMatch: 'full',
       component: PaymentCheckoutComponent,
     },
     {
-    path: 'continue-to-checkout',
+    path: 'continue-to-checkout',  pathMatch: 'full',
     component: ContinueToCheckoutComponent,
     },
   
-  {path: 'contact-us',
+  {path: 'contact-us',  pathMatch: 'full',
     component: ContactUsComponent},
     
-  {path: 'order', component: OrderComponent},
+  {path: 'order',  pathMatch: 'full', component: OrderComponent},
   
-  {path:'basket', component:BasketComponent},
-  {path:'item', component:ItemComponent}
+  {path:'basket',  pathMatch: 'full', component:BasketComponent},
+  {path:'item',  pathMatch: 'full', component:ItemComponent}
  
   
 ]

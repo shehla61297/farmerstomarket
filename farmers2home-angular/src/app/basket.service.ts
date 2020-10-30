@@ -21,7 +21,7 @@ getBasket():Observable<Basket[]>{
   (this.rootURL+"/basket/list")
 }
 getItems(basketID:number):Observable<BasketItems[]>{
-  return this.httpsvc.get<BasketItems[]>(this.rootURL + "basketItems/"+basketID )
+  return this.httpsvc.get<BasketItems[]>(this.rootURL + "item/list" )
 }
 
 addItemToBasket(basketID:number, itemID: number):Observable<Item[]> {
